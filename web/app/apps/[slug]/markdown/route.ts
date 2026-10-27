@@ -5,6 +5,7 @@ import { guideToMarkdown } from "@/lib/markdown";
 export async function GET(request: NextRequest, ctx: RouteContext<"/apps/[slug]/markdown">) {
   const { slug } = await ctx.params;
   const version = request.nextUrl.searchParams.get("v");
+  if (version !== null && !/^\d+$/.test(version)) return new Response(`No version ${version} of ${slug}`, { status: 404 });
   const stored = await getGuide(slug, version);
   if (stored === null) return new Response(`No guide for ${slug}`, { status: 404 });
   const pageUrl = new URL(`/apps/${slug}${version ? `?v=${version}` : ""}`, request.nextUrl.origin).toString();

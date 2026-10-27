@@ -41,6 +41,11 @@ def test_unknown_source_id_is_downgraded():
     assert _single(claim("sourced", ["s9"], "restricted scopes must complete"), [PAGE]) == ("inferred", ["cites unknown source ids ['s9']"])
 
 
+def test_unknown_and_inferred_claims_are_never_changed_or_counted():
+    assert _single(claim("unknown", ["s9"]), [PAGE]) == ("unknown", [])
+    assert _single(claim("inferred", ["s9"]), [PAGE]) == ("inferred", [])
+
+
 def test_claims_inside_steps_are_checked_and_original_draft_is_untouched():
     original = draft(steps=[step(claims=[claim("tested", ["s1"])])])
     checked, downgrades = verify(original, [PAGE])

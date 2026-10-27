@@ -40,6 +40,9 @@ def _claims(draft: GuideDraft) -> Iterator[tuple[str, Claim]]:
 
 def _failure(claim: Claim, sources: dict[str, Source]) -> str | None:
     """Why the claim's status is unsupported, or None if it holds."""
+    # Inferred and unknown claims assert no evidence, so there is nothing to check or downgrade.
+    if claim.status not in ("tested", "sourced"):
+        return None
     missing = [sid for sid in claim.source_ids if sid not in sources]
     if missing:
         return f"cites unknown source ids {missing}"

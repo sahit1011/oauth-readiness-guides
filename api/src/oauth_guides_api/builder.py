@@ -6,14 +6,19 @@ section calls keep each payload short, let the agent fix one section at a time, 
 view a milestone per section. Recording a section again replaces it.
 """
 
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 
-from .schema import Artifact, Blocker, Claim, ComposioNote, Fact, GuideDraft, Stage, Step
+from .schema import Artifact, Blocker, Claim, ComposioNote, Fact, GuideDraft, Stage, Step, check_facts_and_stages
 
 
 class FactsSection(BaseModel):
     facts: list[Fact]
     stages: list[Stage]
+
+    @model_validator(mode="after")
+    def _facts_and_stages(self) -> "FactsSection":
+        check_facts_and_stages(self.facts, self.stages)
+        return self
 
 
 class StepsSection(BaseModel):

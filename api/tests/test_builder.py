@@ -40,9 +40,13 @@ def test_invalid_section_is_rejected_and_resending_replaces_it():
     assert len(builder.finish(HEADER).steps) == 1
 
 
-def test_guide_level_rules_still_apply_at_finish():
+def test_missing_or_duplicate_facts_are_rejected_when_recorded():
     builder = GuideBuilder()
-    _record_all(builder, draft())
-    builder.record("record_facts", {"facts": [], "stages": draft().model_dump()["stages"]})
+    stages = draft().model_dump()["stages"]
+    facts = draft().model_dump()["facts"]
     with pytest.raises(ValidationError, match="facts must cover each"):
-        builder.finish(HEADER)
+        builder.record("record_facts", {"facts": [], "stages": stages})
+    with pytest.raises(ValidationError, match="facts must cover each"):
+        builder.record("record_facts", {"facts": [*facts, facts[0]], "stages": stages})
+    with pytest.raises(ValidationError, match="stages must list each audience"):
+        builder.record("record_facts", {"facts": facts, "stages": [*stages, stages[0]]})

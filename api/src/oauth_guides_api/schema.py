@@ -99,6 +99,17 @@ class ComposioNote(BaseModel):
     recommendation: str
 
 
+def check_facts_and_stages(facts: list[Fact], stages: list[Stage]) -> None:
+    """Shared by GuideDraft and the record_facts section, so the agent learns of a problem when it records it."""
+    keys = [f.key for f in facts]
+    expected = set(FactKey.__args__)
+    if sorted(keys) != sorted(expected):
+        raise ValueError(f"facts must cover each of {sorted(expected)} exactly once, got {keys}")
+    audiences = [s.audience for s in stages]
+    if not audiences or len(audiences) != len(set(audiences)):
+        raise ValueError(f"stages must list each audience at most once and at least one, got {audiences}")
+
+
 class GuideDraft(BaseModel):
     app_name: str
     website: str
@@ -115,18 +126,8 @@ class GuideDraft(BaseModel):
     open_questions: list[str]
 
     @model_validator(mode="after")
-    def _every_fact_once(self) -> "GuideDraft":
-        keys = [f.key for f in self.facts]
-        expected = set(FactKey.__args__)
-        if sorted(keys) != sorted(expected):
-            raise ValueError(f"facts must cover each of {sorted(expected)} exactly once, got {keys}")
-        return self
-
-    @model_validator(mode="after")
-    def _stages_once_each(self) -> "GuideDraft":
-        audiences = [s.audience for s in self.stages]
-        if not audiences or len(audiences) != len(set(audiences)):
-            raise ValueError(f"stages must list each audience at most once and at least one, got {audiences}")
+    def _facts_and_stages(self) -> "GuideDraft":
+        check_facts_and_stages(self.facts, self.stages)
         return self
 
 

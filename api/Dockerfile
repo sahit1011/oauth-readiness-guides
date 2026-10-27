@@ -10,6 +10,6 @@ RUN uv sync --frozen --no-dev --no-install-project
 COPY src ./src
 RUN uv sync --frozen --no-dev
 
-# Railway sets PORT and terminates TLS at its proxy; --proxy-headers makes request.client.host the
-# real client IP, which the per-IP generation limit depends on.
-CMD ["sh", "-c", "exec uv run --no-sync uvicorn oauth_guides_api.app:app --host 0.0.0.0 --port ${PORT:-8000} --proxy-headers --forwarded-allow-ips='*'"]
+# Render sets PORT and terminates TLS at its edge. Forwarded headers are not trusted wholesale: the
+# per-IP limit reads True-Client-IP in app.py, because the leftmost X-Forwarded-For is client-controlled.
+CMD ["sh", "-c", "exec uv run --no-sync uvicorn oauth_guides_api.app:app --host 0.0.0.0 --port ${PORT:-8000}"]

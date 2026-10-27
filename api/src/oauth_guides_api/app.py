@@ -94,8 +94,10 @@ async def start_generation(request: GenerateRequest, http: Request) -> dict:
 
     if sum(1 for j in _jobs.values() if j.task is not None and not j.task.done()) >= MAX_CONCURRENT_JOBS:
         raise HTTPException(429, f"{MAX_CONCURRENT_JOBS} guides are already being generated; try again in a few minutes")
-    # Behind Railway's proxy this is the client IP only when uvicorn runs with --proxy-headers.
-    ip = http.client.host
+    # Render's edge (Cloudflare) sets True-Client-IP to the real client and overwrites a client-sent
+    # value, whereas the leftmost X-Forwarded-For entry is client-controlled. The header is absent only
+    # when the API is reached directly (local development), where the socket address is the client.
+    ip = http.headers.get("true-client-ip") or http.client.host
     now = time.monotonic()
     recent = [t for t in _starts_by_ip[ip] if now - t < _HOUR_SECONDS]
     if len(recent) >= JOBS_PER_IP_PER_HOUR:

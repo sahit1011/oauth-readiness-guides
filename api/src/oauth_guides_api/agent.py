@@ -150,6 +150,15 @@ class AgentError(RuntimeError):
     pass
 
 
+# Required arguments of the tools dispatched by _run_tool (section tools are validated by GuideBuilder).
+_REQUIRED_ARGS: dict[str, tuple[str, ...]] = {
+    "probe_oauth_discovery": ("host",),
+    "probe_authorize_endpoint": ("authorize_url",),
+    WEB_SEARCH: ("query",),
+    FETCH_URL: ("urls",),
+}
+
+
 def _strings(value: object) -> list[str]:
     """All string leaves of a tool's JSON output; its shape varies by tool."""
     if isinstance(value, str):
@@ -200,14 +209,18 @@ class Investigation:
 
     def _run_tool(self, name: str, args: dict) -> tuple[str, bool]:
         self._emit({"type": "tool", "name": name, "input": args})
+        # A malformed call goes back to the model to fix, like a rejected section, instead of ending the run.
+        if name not in _REQUIRED_ARGS:
+            return f"Unknown tool {name!r}. Available: {', '.join([*_REQUIRED_ARGS, *SECTIONS, FINISH])}.", True
+        missing = [a for a in _REQUIRED_ARGS[name] if a not in args]
+        if missing:
+            return f"{name} is missing required argument(s): {', '.join(missing)}.", True
         if name == "probe_oauth_discovery":
             return self._probe(probe_oauth_discovery(self._http, args["host"]))
         if name == "probe_authorize_endpoint":
             # scope is optional in the tool schema; absent means the probe sends none.
             return self._probe(probe_authorize_endpoint(self._http, args["authorize_url"], args.get("scope")))
-        if name in (WEB_SEARCH, FETCH_URL):
-            return self._composio_tool(name, args)
-        raise AgentError(f"model called unknown tool {name!r}")
+        return self._composio_tool(name, args)
 
     def run(self, query: str) -> GuideDraft:
         tools = [*self._composio.tools.get(COMPOSIO_USER_ID, tools=[WEB_SEARCH, FETCH_URL]), *_LOCAL_TOOLS]

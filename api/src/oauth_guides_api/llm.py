@@ -27,12 +27,18 @@ REFUSAL_FALLBACK_BETA = "server-side-fallback-2026-07-01"
 # Transient provider-side failures only. Auth, permission and bad-request errors are our bugs
 # and must surface instead of being masked by a second provider.
 _FALLBACK_ON = (
-    anthropic.APIConnectionError,
     anthropic.RateLimitError,
     anthropic.InternalServerError,
     anthropic.ServiceUnavailableError,
     anthropic.OverloadedError,
 )
+# The same failures by API error type: an error event that arrives mid-stream, after an HTTP 200,
+# is raised as a plain APIStatusError whose `type` carries the real error (anthropic _exceptions.py).
+_TRANSIENT_ERROR_TYPES = {"rate_limit_error", "api_error", "overloaded_error"}
+
+
+def is_transient(exc: anthropic.APIStatusError) -> bool:
+    return isinstance(exc, _FALLBACK_ON) or exc.type in _TRANSIENT_ERROR_TYPES
 
 Provider = Literal["anthropic", "openrouter"]
 
@@ -62,7 +68,11 @@ class LLM:
                 model=MODEL, betas=[REFUSAL_FALLBACK_BETA], fallbacks="default", **kwargs
             ) as stream:
                 return stream.get_final_message(), "anthropic"
-        except _FALLBACK_ON:
+        except anthropic.APIConnectionError:
+            return self._openrouter(**kwargs)
+        except anthropic.APIStatusError as exc:
+            if not is_transient(exc):
+                raise
             return self._openrouter(**kwargs)
 
     def _openrouter(self, **kwargs) -> tuple[Message, Provider]:

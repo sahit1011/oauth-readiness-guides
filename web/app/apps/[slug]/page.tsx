@@ -364,6 +364,8 @@ function GuideView({ stored, pageUrl }: { stored: StoredGuide; pageUrl: string }
 async function GuideLoader({ params, searchParams }: PageProps<"/apps/[slug]">) {
   const { slug } = await params;
   const { v } = await searchParams;
+  // The API rejects a non-numeric version with 422; for a reader that is simply a missing guide.
+  if (v !== undefined && !(typeof v === "string" && /^\d+$/.test(v))) notFound();
   const stored = await getGuide(slug, typeof v === "string" ? v : null);
   if (stored === null) notFound();
   const h = await headers();

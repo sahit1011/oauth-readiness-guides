@@ -115,6 +115,9 @@ def probe_oauth_discovery(client: httpx.Client, host: str) -> ProbeResult:
         except json.JSONDecodeError:
             lines.append("  body is not JSON")
             continue
+        if not isinstance(document, dict):
+            lines.append(f"  body is JSON but not an object ({type(document).__name__})")
+            continue
         for key in _DISCOVERY_KEYS:
             if key in document:
                 lines.append(f"  {key}: {json.dumps(document[key])}")
