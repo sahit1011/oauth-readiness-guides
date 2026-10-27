@@ -65,8 +65,9 @@ case), or unknown.
 | GitHub (local run) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 7/7 | 0 | Instant | Instant | yes |
 | GitHub (production run, live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 7/7 | 0 | Instant | Instant | yes |
 
-The production guide was scored through the public API with the same scoring function, since the
-production database only accepts connections from inside Render.
+The production row comes from `uv run python scripts/evaluate.py --api https://oauth-guides-api.onrender.com`,
+which reads guides through the public API, so the production database keeps accepting connections
+only from inside Render.
 
 _The remaining curated apps are pending generation with Claude; this table is updated as they run._
 

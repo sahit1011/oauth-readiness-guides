@@ -142,6 +142,7 @@ Useful scripts (run from `api/`):
 ```bash
 uv run --env-file .env python scripts/build_catalog.py      # refresh web/data/catalog.json from Composio
 uv run --env-file .env python scripts/evaluate.py           # score stored guides against eval/golden.json
+uv run python scripts/evaluate.py --api https://oauth-guides-api.onrender.com   # same, for the deployed app
 uv run --env-file .env python -m oauth_guides_api.curate <slug> <version>   # mark a reviewed version
 ```
 
