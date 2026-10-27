@@ -2,8 +2,8 @@
 
 How hard is it to get a provider OAuth app ready so your agent's users can connect? This project
 answers that per app, with a library of guides and an agent that researches any app you name and
-writes a guide while you watch. Every statement in a guide is labeled **tested**, **sourced**, or
-**inferred**, and the labels are checked mechanically rather than taken on the agent's word.
+writes a guide while you watch. Every statement in a guide is labeled **tested**, **sourced**,
+**inferred**, or **unknown**, and the labels are checked mechanically rather than taken on the agent's word.
 
 - Live app: https://oauth-readiness-guides-six.vercel.app (web on Vercel)
 - API: https://oauth-guides-api.onrender.com/api/guides (FastAPI on Render, with Render Postgres)
@@ -11,6 +11,11 @@ writes a guide while you watch. Every statement in a guide is labeled **tested**
 
 The API runs on Render's free tier, which stops idle services: the first request after a quiet
 period takes about a minute while it wakes up.
+
+The deployed agent currently runs on a free OpenRouter model (no Claude key is configured), which
+allows about 50 model requests a day, roughly two new guides. Live generation is also limited to 3
+runs at a time and 5 per visitor per hour. Once the daily model quota is used, new generations fail
+with a rate-limit error until it resets at 00:00 UTC; the existing library is unaffected.
 
 ## The problem
 
@@ -21,7 +26,7 @@ toolkits, so a developer can start without registering anything; teams bring the
 their own consent-screen branding, extra scopes, dedicated rate limits, or because no managed app
 exists.
 
-Measured from the Composio toolkits API on 2026-10-28 ([`scripts/build_catalog.py`](api/scripts/build_catalog.py)):
+Measured from the Composio toolkits API on 2026-10-27 UTC ([`scripts/build_catalog.py`](api/scripts/build_catalog.py)):
 **259 toolkits authenticate with OAuth, and 124 of them have a Composio managed app.** For the other
 135, the developer needs their own OAuth app from day one.
 
@@ -58,8 +63,9 @@ Each guide is organized around the questions above, not around the provider's do
        ▼
  ┌─────────────┐   Composio Search (web search, page fetch)   ┌───────────────┐
  │ Agent loop  │ ───────────────────────────────────────────▶ │ Provider docs │
- │ (Claude)    │   probes: OIDC discovery, authorize endpoint  │ OAuth servers │
- └─────┬───────┘ ───────────────────────────────────────────▶ └───────────────┘
+ │ Claude, or  │   probes: OIDC discovery, authorize endpoint  │ OAuth servers │
+ │ OpenRouter  │ ───────────────────────────────────────────▶ │               │
+ └─────┬───────┘                                               └───────────────┘
        │ records the guide section by section (facts, steps, findings, artifacts, Composio)
        ▼
  ┌─────────────┐   quotes must appear verbatim in the cited page; "tested" must cite a probe

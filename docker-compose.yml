@@ -1,4 +1,4 @@
-# Local development database only. Production uses Railway Postgres via GUIDES_DATABASE_URL.
+# Local development database only. Production uses Render Postgres via GUIDES_DATABASE_URL.
 services:
   db:
     image: postgres:16

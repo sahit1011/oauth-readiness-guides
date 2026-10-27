@@ -38,9 +38,9 @@ CASA assessor may charge a fee.
 ⁵ Microsoft does not review the app, but each customer tenant's consent policy can block apps from
 unverified publishers; publisher verification needs a Microsoft AI Cloud Partner Program account.
 
-### Two public disagreements, settled
+### Two conflicting public claims, settled
 
-Two other public analyses of this assignment contradict each other on two points. The official sources say:
+Two claims that circulate in public write-ups conflict with each other. The official sources say:
 
 - **Notion: does a public connection need review?** No. Review applies only to the optional
   Marketplace listing: "your connection can be used via its OAuth flow without being listed"
@@ -64,12 +64,29 @@ case), or unknown.
 |---|---|---|---|---|---|---|
 | GitHub (local run) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 7/7 | 0 | Instant | Instant | yes |
 | GitHub (production run, live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 7/7 | 0 | Instant | Instant | yes |
+| Slack (live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 6/7 | **1** | Instant | Moderate | no |
+| Gmail (live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 6/6 (1 left unknown) | 0 | High | High | yes |
+
+Across the live guides: **19/20 scored facts correct, 1 confidently wrong.**
+
+**The Slack miss, and what it shows.** The guide says Slack reviews an app before arbitrary users can
+connect, labeled `sourced`, with a quote the verifier confirmed verbatim on docs.slack.dev: "apps
+intended for commercial distribution should be submitted and approved for listing in the Slack
+Marketplace. Unlike unlisted distributed apps, apps listed in the Slack Marketplace are reviewed…".
+The quote is real, but it describes Marketplace *listing* review, and its second sentence says unlisted
+apps are not reviewed, which is the golden answer. This is the verifier's known limit made concrete: it
+proves a quote exists, not that the quote supports the statement. The golden value stays as it is.
+The case is genuinely nuanced, though: since 2025-05-29 unlisted commercial apps are limited to 1
+request per minute on `conversations.history`, so for an agent that reads messages, Marketplace review
+is effectively required. A good guide says exactly that. This guide also missed that rate limit, the
+most important Slack nuance for agent builders.
 
 The production row comes from `uv run python scripts/evaluate.py --api https://oauth-guides-api.onrender.com`,
 which reads guides through the public API, so the production database keeps accepting connections
 only from inside Render.
 
-_The remaining curated apps are pending generation with Claude; this table is updated as they run._
+_Notion, Spotify, Microsoft, and LinkedIn are being generated as the free model's daily quota allows
+(about two guides a day); this table is updated as they land._
 
 **What the GitHub result shows.** The free model got every value right, but 13 of the statements it
 labeled as sourced did not quote their page verbatim, so the verifier downgraded them and the guide
@@ -127,4 +144,6 @@ Unauthenticated probes ([`probes.py`](api/src/oauth_guides_api/probes.py)), run 
 - LinkedIn business verification and paid tiers; GitHub Marketplace publisher verification; how long
   Spotify's partner application and Microsoft's partner verification take.
 - The verifier's quote check is lexical: it proves a quote exists in the cited page, not that the page
-  supports the statement, and a `tested` claim is accepted when it cites any probe.
+  supports the statement (the Slack miss above is a real instance), and a `tested` claim is accepted
+  when it cites any probe.
+- No guide is marked human-reviewed yet: that waits on the setup attempts above.
