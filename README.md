@@ -5,8 +5,12 @@ answers that per app, with a library of guides and an agent that researches any 
 writes a guide while you watch. Every statement in a guide is labeled **tested**, **sourced**, or
 **inferred**, and the labels are checked mechanically rather than taken on the agent's word.
 
-- Live app: _pending deployment (Vercel + Railway)_
+- Live app: https://oauth-readiness-guides-six.vercel.app (web on Vercel)
+- API: https://oauth-guides-api.onrender.com/api/guides (FastAPI on Render, with Render Postgres)
 - How the guidance was checked: [VERIFICATION.md](VERIFICATION.md)
+
+The API runs on Render's free tier, which stops idle services: the first request after a quiet
+period takes about a minute while it wakes up.
 
 ## The problem
 
@@ -145,6 +149,8 @@ uv run --env-file .env python -m oauth_guides_api.curate <slug> <version>   # ma
 
 - **Single API instance.** Live jobs and rate limits are held in memory, so a restart drops running
   jobs. Fine for a demo; a queue would replace it in production.
+- **Free hosting tiers.** The Render free instance sleeps when idle (slow first request), and the
+  free Render Postgres database expires on 2026-11-26.
 - **The quote check is lexical.** It proves the quote exists in the page, not that the page means
   what the claim says. A `tested` claim is accepted if it cites any probe, without checking that the
   probe output supports the statement.
