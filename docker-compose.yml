@@ -1,0 +1,15 @@
+# Local development database only. Production uses Railway Postgres via GUIDES_DATABASE_URL.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: guides
+      POSTGRES_PASSWORD: guides-dev-only
+      POSTGRES_DB: guides
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

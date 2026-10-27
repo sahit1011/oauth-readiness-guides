@@ -1,0 +1,2581 @@
+{
+ "source": "Composio toolkits API (composio.toolkits.list), filtered to OAuth1/OAuth2 auth schemes",
+ "generated_at": "2026-10-27T19:23:48+00:00",
+ "apps": [
+  {
+   "slug": "adroll",
+   "name": "AdRoll",
+   "website": "https://www.adroll.com/",
+   "categories": [
+    "marketing",
+    "ads & conversion",
+    "analytics"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "aha",
+   "name": "Aha!",
+   "website": "https://www.aha.io",
+   "categories": [
+    "product management",
+    "project management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "ahrefs",
+   "name": "Ahrefs",
+   "website": "https://ahrefs.com/",
+   "categories": [
+    "seo & ai visibility",
+    "marketing automation",
+    "analytics"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "aircall",
+   "name": "Aircall",
+   "website": "https://aircall.io",
+   "categories": [
+    "communication",
+    "phone & sms",
+    "call tracking"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "airtable",
+   "name": "Airtable",
+   "website": "https://www.airtable.com/",
+   "categories": [
+    "productivity",
+    "spreadsheets",
+    "databases"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "alpaca",
+   "name": "Alpaca",
+   "website": "https://alpaca.markets",
+   "categories": [
+    "commerce",
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "apaleo",
+   "name": "Apaleo",
+   "website": "https://apaleo.com",
+   "categories": [
+    "scheduling & booking",
+    "accounting"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "asana",
+   "name": "Asana",
+   "website": "https://asana.com/",
+   "categories": [
+    "project management",
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "attio",
+   "name": "Attio",
+   "website": "https://attio.com",
+   "categories": [
+    "crm"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "aweber",
+   "name": "AWeber",
+   "website": "https://www.aweber.com/",
+   "categories": [
+    "marketing automation",
+    "email newsletters"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "azure_monitor_activity_log",
+   "name": "Azure Monitor Activity Log",
+   "website": "https://portal.azure.com",
+   "categories": [
+    "it operations",
+    "server monitoring",
+    "analytics"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "bamboohr",
+   "name": "BambooHR",
+   "website": "https://www.bamboohr.com",
+   "categories": [
+    "human resources",
+    "hr talent & recruitment"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "basecamp",
+   "name": "Basecamp",
+   "website": "https://basecamp.com",
+   "categories": [
+    "project management",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "beeminder",
+   "name": "Beeminder",
+   "website": "https://www.beeminder.com",
+   "categories": [
+    "task management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "bexio",
+   "name": "bexio",
+   "website": "https://www.bexio.com/",
+   "categories": [
+    "accounting",
+    "crm",
+    "project management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "bitbucket",
+   "name": "Bitbucket",
+   "website": "https://bitbucket.org/",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "bitly",
+   "name": "Bitly",
+   "website": "https://bitly.com",
+   "categories": [
+    "url shortener",
+    "marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "blackbaud",
+   "name": "Blackbaud",
+   "website": "https://www.blackbaud.com/",
+   "categories": [
+    "fundraising",
+    "crm"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "blackboard",
+   "name": "Blackboard",
+   "website": "https://www.blackboard.com",
+   "categories": [
+    "education",
+    "online courses"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "boldsign",
+   "name": "Boldsign",
+   "website": "https://boldsign.com/",
+   "categories": [
+    "signatures",
+    "documents"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "borneo",
+   "name": "Borneo",
+   "website": "https://www.borneo.com",
+   "categories": [
+    "security & identity tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "box",
+   "name": "Box",
+   "website": "https://www.box.com",
+   "categories": [
+    "file management & storage",
+    "documents"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "box_mcp",
+   "name": "Box MCP",
+   "website": "https://mcp.box.com",
+   "categories": [
+    "model context protocol",
+    "content & files",
+    "documents"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "brevo",
+   "name": "Brevo",
+   "website": "https://www.brevo.com",
+   "categories": [
+    "email newsletters",
+    "marketing automation",
+    "phone & sms"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "brex",
+   "name": "Brex",
+   "website": "https://www.brex.com/",
+   "categories": [
+    "accounting"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "buffer",
+   "name": "Buffer",
+   "website": "https://buffer.com",
+   "categories": [
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "cal",
+   "name": "Cal",
+   "website": "https://cal.com",
+   "categories": [
+    "scheduling & booking",
+    "calendar"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "calendly",
+   "name": "Calendly",
+   "website": "https://calendly.com/",
+   "categories": [
+    "scheduling & booking",
+    "calendar"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "canva",
+   "name": "Canva",
+   "website": "https://www.canva.com",
+   "categories": [
+    "images & design"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "canvas",
+   "name": "Canvas",
+   "website": "https://www.instructure.com/canvas",
+   "categories": [
+    "online courses",
+    "education"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "capsule_crm",
+   "name": "Capsule CRM",
+   "website": "https://capsulecrm.com",
+   "categories": [
+    "crm",
+    "contact management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "cleverreach",
+   "name": "CleverReach",
+   "website": "https://www.cleverreach.com/",
+   "categories": [
+    "marketing automation",
+    "email newsletters"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "clickfunnels",
+   "name": "ClickFunnels 2.0",
+   "website": "https://www.clickfunnels.com/",
+   "categories": [
+    "marketing automation",
+    "sales & crm",
+    "ecommerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "clickup",
+   "name": "ClickUp",
+   "website": "https://clickup.com",
+   "categories": [
+    "productivity",
+    "project management",
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "clio_manage",
+   "name": "Clio Manage",
+   "website": "https://www.clio.com/manage/",
+   "categories": [
+    "legal & public records",
+    "crm",
+    "project management",
+    "time tracking software"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "clockify",
+   "name": "Clockify",
+   "website": "https://clockify.me/",
+   "categories": [
+    "time tracking software",
+    "project management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "clover",
+   "name": "Clover",
+   "website": "https://www.clover.com",
+   "categories": [
+    "commerce",
+    "payment processing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "confluence",
+   "name": "Confluence",
+   "website": "https://www.atlassian.com/software/confluence",
+   "categories": [
+    "team collaboration",
+    "documents"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "constant_contact",
+   "name": "Constant Contact",
+   "website": "https://www.constantcontact.com/",
+   "categories": [
+    "marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "contacts_plus",
+   "name": "Contacts+",
+   "website": "https://www.contactsplus.com",
+   "categories": [
+    "contact management",
+    "productivity"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "contentful",
+   "name": "Contentful",
+   "website": "https://www.contentful.com/",
+   "categories": [
+    "developer tools",
+    "website builders"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "coupa",
+   "name": "Coupa",
+   "website": "https://www.coupa.com",
+   "categories": [
+    "accounting",
+    "proposal & invoice management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "crowdin",
+   "name": "Crowdin",
+   "website": "https://crowdin.com",
+   "categories": [
+    "developer tools",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "d2lbrightspace",
+   "name": "D2L Brightspace",
+   "website": "https://www.d2l.com/brightspace/",
+   "categories": [
+    "education",
+    "online courses"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "dart",
+   "name": "Dart",
+   "website": "https://www.itsdart.com/",
+   "categories": [
+    "project management",
+    "artificial intelligence"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "databricks",
+   "name": "Databricks",
+   "website": "https://www.databricks.com/",
+   "categories": [
+    "developer tools",
+    "analytics"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "datadog",
+   "name": "Datadog",
+   "website": "https://www.datadoghq.com",
+   "categories": [
+    "server monitoring",
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "daytona",
+   "name": "Daytona",
+   "website": "https://www.daytona.io",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "dbt_cloud",
+   "name": "dbt Cloud",
+   "website": "https://www.getdbt.com/product/dbt-cloud",
+   "categories": [
+    "developer tools",
+    "analytics",
+    "business intelligence"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "deel",
+   "name": "Deel",
+   "website": "https://www.deel.com/",
+   "categories": [
+    "hr talent & recruitment",
+    "accounting"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "deputy",
+   "name": "Deputy",
+   "website": "https://www.deputy.com/",
+   "categories": [
+    "human resources",
+    "scheduling & booking"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "dialpad",
+   "name": "Dialpad",
+   "website": "https://www.dialpad.com/",
+   "categories": [
+    "communication",
+    "phone & sms",
+    "video conferencing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "digital_ocean",
+   "name": "DigitalOcean",
+   "website": "https://www.digitalocean.com/",
+   "categories": [
+    "developer tools",
+    "server monitoring"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "discord",
+   "name": "Discord",
+   "website": "https://composio.dev",
+   "categories": [
+    "team chat",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "discordbot",
+   "name": "Discord Bot",
+   "website": "https://discord.com/",
+   "categories": [
+    "team chat",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "disqus",
+   "name": "Disqus",
+   "website": "https://disqus.com/",
+   "categories": [
+    "social media accounts",
+    "social media marketing",
+    "communication"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "docusign",
+   "name": "DocuSign",
+   "website": "https://www.docusign.com",
+   "categories": [
+    "signatures",
+    "documents"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "dribbble",
+   "name": "Dribbble",
+   "website": "https://dribbble.com",
+   "categories": [
+    "images & design",
+    "social media accounts"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "dropbox",
+   "name": "Dropbox",
+   "website": "https://www.dropbox.com",
+   "categories": [
+    "file management & storage"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "dropbox_sign",
+   "name": "Dropbox Sign",
+   "website": "https://sign.dropbox.com",
+   "categories": [
+    "signatures",
+    "documents"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "dub",
+   "name": "Dub",
+   "website": "https://dub.co",
+   "categories": [
+    "url shortener",
+    "analytics"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "dynamics365",
+   "name": "Dynamics 365",
+   "website": "https://www.microsoft.com/en-in/",
+   "categories": [
+    "crm",
+    "project management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "dynatrace",
+   "name": "Dynatrace",
+   "website": "https://www.dynatrace.com/",
+   "categories": [
+    "analytics",
+    "it operations",
+    "server monitoring"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "egnyte",
+   "name": "Egnyte",
+   "website": "https://www.egnyte.com",
+   "categories": [
+    "file management & storage",
+    "team collaboration"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "epic_games",
+   "name": "Epic Games",
+   "website": "https://store.epicgames.com/en-US/",
+   "categories": [
+    "gaming"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "eventbrite",
+   "name": "Eventbrite",
+   "website": "https://www.eventbrite.com/",
+   "categories": [
+    "event management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "excel",
+   "name": "Excel",
+   "website": "https://excel.cloud.microsoft/en-us/",
+   "categories": [
+    "spreadsheets"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "exist",
+   "name": "Exist",
+   "website": "https://exist.io/",
+   "categories": [
+    "analytics",
+    "fitness"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "facebook",
+   "name": "Facebook",
+   "website": "https://www.facebook.com/",
+   "categories": [
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "fathom",
+   "name": "Fathom",
+   "website": "https://fathom.video",
+   "categories": [
+    "ai meeting assistants",
+    "transcription"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "figma",
+   "name": "Figma",
+   "website": "https://www.figma.com/",
+   "categories": [
+    "images & design",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "follow_up_boss",
+   "name": "Follow Up Boss",
+   "website": "https://www.followupboss.com",
+   "categories": [
+    "crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "freeagent",
+   "name": "Freeagent",
+   "website": "https://www.freeagent.com",
+   "categories": [
+    "accounting"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "freee",
+   "name": "freee",
+   "website": "https://www.freee.co.jp",
+   "categories": [
+    "accounting",
+    "human resources"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "freshbooks",
+   "name": "FreshBooks",
+   "website": "https://www.freshbooks.com/signup",
+   "categories": [
+    "accounting",
+    "proposal & invoice management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "freshsales",
+   "name": "Freshsales",
+   "website": "https://www.freshworks.com/crm/sales/",
+   "categories": [
+    "crm",
+    "sales & crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "front",
+   "name": "Front",
+   "website": "https://frontapp.com",
+   "categories": [
+    "customer support",
+    "team collaboration"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "getresponse",
+   "name": "GetResponse",
+   "website": "https://www.getresponse.com",
+   "categories": [
+    "marketing automation",
+    "email newsletters"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "github",
+   "name": "GitHub",
+   "website": "https://github.com/",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "gitlab",
+   "name": "GitLab",
+   "website": "https://about.gitlab.com",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "gmail",
+   "name": "Gmail",
+   "website": "https://mail.google.com",
+   "categories": [
+    "email"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "gong",
+   "name": "Gong",
+   "website": "https://www.gong.io",
+   "categories": [
+    "analytics",
+    "ai sales tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "google_admin",
+   "name": "Google Admin",
+   "website": "https://admin.google.com/",
+   "categories": [
+    "security & identity tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "googleads",
+   "name": "Google Ads",
+   "website": "https://composio.dev",
+   "categories": [
+    "ads & conversion"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "google_adsense",
+   "name": "Google AdSense",
+   "website": "https://adsense.google.com",
+   "categories": [
+    "ads & conversion"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "google_analytics",
+   "name": "Google Analytics",
+   "website": "https://analytics.google.com",
+   "categories": [
+    "analytics"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googlebigquery",
+   "name": "Google BigQuery",
+   "website": "https://cloud.google.com/bigquery",
+   "categories": [
+    "databases",
+    "analytics"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googlecalendar",
+   "name": "Google Calendar",
+   "website": "https://calendar.google.com",
+   "categories": [
+    "scheduling & booking"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "google_chat",
+   "name": "Google Chat",
+   "website": "https://chat.google.com",
+   "categories": [
+    "productivity",
+    "communication"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "google_classroom",
+   "name": "Google Classroom",
+   "website": "https://classroom.google.com",
+   "categories": [
+    "education"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "google_data_studio",
+   "name": "Google Data Studio",
+   "website": "https://lookerstudio.google.com",
+   "categories": [
+    "business intelligence",
+    "analytics",
+    "dashboards"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "googledocs",
+   "name": "Google Docs",
+   "website": "https://docs.google.com",
+   "categories": [
+    "documents"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googledrive",
+   "name": "Google Drive",
+   "website": "https://drive.google.com",
+   "categories": [
+    "file management & storage"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "google_maps",
+   "name": "Google Maps",
+   "website": "https://www.google.com/maps",
+   "categories": [
+    "places & weather",
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googlemeet",
+   "name": "Google Meet",
+   "website": "https://meet.google.com/",
+   "categories": [
+    "video conferencing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "google_merchant",
+   "name": "Google Merchant Center",
+   "website": "https://merchants.google.com",
+   "categories": [
+    "ecommerce",
+    "commerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "googlephotos",
+   "name": "Google Photos",
+   "website": "https://photos.google.com",
+   "categories": [
+    "images & design",
+    "file management & storage"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "google_search_console",
+   "name": "Google Search Console",
+   "website": "https://search.google.com/search-console",
+   "categories": [
+    "analytics"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googlesheets",
+   "name": "Google Sheets",
+   "website": "https://sheets.google.com/",
+   "categories": [
+    "spreadsheets"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googleslides",
+   "name": "Google Slides",
+   "website": "https://docs.google.com/presentation",
+   "categories": [
+    "documents"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googlesuper",
+   "name": "Google Super",
+   "website": "https://www.google.com/",
+   "categories": [
+    "file management & storage",
+    "calendar",
+    "spreadsheets"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googletasks",
+   "name": "Google Tasks",
+   "website": "https://tasks.google.com/tasks/",
+   "categories": [
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "googlecontacts",
+   "name": "Googlecontacts",
+   "website": "https://contacts.google.com",
+   "categories": [
+    "productivity",
+    "crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "googleforms",
+   "name": "Googleforms",
+   "website": "https://forms.google.com",
+   "categories": [
+    "productivity",
+    "forms & surveys"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "gorgias",
+   "name": "Gorgias",
+   "website": "https://www.gorgias.com",
+   "categories": [
+    "crm",
+    "customer support"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "greenhouse",
+   "name": "Greenhouse",
+   "website": "https://www.greenhouse.io",
+   "categories": [
+    "hr talent & recruitment",
+    "human resources"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "gumroad",
+   "name": "Gumroad",
+   "website": "https://gumroad.com",
+   "categories": [
+    "ecommerce"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "gusto",
+   "name": "Gusto",
+   "website": "https://gusto.com",
+   "categories": [
+    "human resources",
+    "hr talent & recruitment"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "halopsa",
+   "name": "HaloPSA",
+   "website": "https://halopsa.com",
+   "categories": [
+    "customer support",
+    "crm",
+    "project management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "harvest",
+   "name": "Harvest",
+   "website": "https://www.getharvest.com/",
+   "categories": [
+    "time tracking software",
+    "proposal & invoice management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "help_scout",
+   "name": "Help Scout",
+   "website": "https://www.helpscout.com",
+   "categories": [
+    "customer support",
+    "communication"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "highlevel_agency",
+   "name": "HighLevel Agency",
+   "website": "https://www.gohighlevel.com/",
+   "categories": [
+    "crm",
+    "marketing automation",
+    "sales & crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "highlevel_location",
+   "name": "HighLevel Location",
+   "website": "https://www.gohighlevel.com/",
+   "categories": [
+    "crm",
+    "marketing automation",
+    "sales & crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "hubspot",
+   "name": "HubSpot",
+   "website": "https://www.hubspot.com/",
+   "categories": [
+    "crm",
+    "marketing automation"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "hugging_face",
+   "name": "Hugging Face",
+   "website": "https://huggingface.co/",
+   "categories": [
+    "artificial intelligence",
+    "ai models",
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "infisical",
+   "name": "Infisical",
+   "website": "https://infisical.com",
+   "categories": [
+    "security & identity tools",
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "instagram",
+   "name": "Instagram",
+   "website": "https://www.instagram.com",
+   "categories": [
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "intercom",
+   "name": "Intercom",
+   "website": "https://www.intercom.com",
+   "categories": [
+    "customer support",
+    "crm"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "jira",
+   "name": "Jira",
+   "website": "https://www.atlassian.com/software/jira",
+   "categories": [
+    "project management",
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "jobber",
+   "name": "Jobber",
+   "website": "https://www.getjobber.com",
+   "categories": [
+    "crm",
+    "scheduling & booking",
+    "proposal & invoice management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "judge_me",
+   "name": "Judge.me",
+   "website": "https://judge.me",
+   "categories": [
+    "reviews",
+    "ecommerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "kintone_rest",
+   "name": "Kintone REST",
+   "website": "https://www.kintone.com/",
+   "categories": [
+    "app builder",
+    "databases",
+    "team collaboration"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "kit",
+   "name": "Kit",
+   "website": "https://kit.com/",
+   "categories": [
+    "marketing automation",
+    "email newsletters"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "klaviyo",
+   "name": "Klaviyo",
+   "website": "https://www.klaviyo.com/",
+   "categories": [
+    "marketing automation",
+    "email newsletters"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "kommo",
+   "name": "Kommo",
+   "website": "https://www.kommo.com",
+   "categories": [
+    "crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "launch_darkly",
+   "name": "LaunchDarkly",
+   "website": "https://launchdarkly.com",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "lever",
+   "name": "Lever",
+   "website": "https://www.lever.co",
+   "categories": [
+    "hr talent & recruitment"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "lightspeed",
+   "name": "Lightspeed Retail X-Series",
+   "website": "https://www.lightspeedhq.com/pos/retail/",
+   "categories": [
+    "commerce",
+    "ecommerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "linear",
+   "name": "Linear",
+   "website": "https://linear.app",
+   "categories": [
+    "project management",
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "linkedin",
+   "name": "LinkedIn",
+   "website": "https://linkedin.com/",
+   "categories": [
+    "social media accounts",
+    "marketing automation"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "linkedin_ads",
+   "name": "Linkedin Ads",
+   "website": "https://www.linkedin.com/advertising",
+   "categories": [
+    "marketing",
+    "ads & conversion"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "linkhut",
+   "name": "Linkhut",
+   "website": "https://linkhut.org/",
+   "categories": [
+    "bookmark managers"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "livechat",
+   "name": "LiveChat",
+   "website": "https://www.livechat.com/",
+   "categories": [
+    "customer support",
+    "communication"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "lodgify",
+   "name": "Lodgify",
+   "website": "https://www.lodgify.com/",
+   "categories": [
+    "scheduling & booking"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "mailchimp",
+   "name": "Mailchimp",
+   "website": "https://mailchimp.com/",
+   "categories": [
+    "email newsletters",
+    "marketing automation"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "mail_up",
+   "name": "MailUp",
+   "website": "https://www.mailup.com",
+   "categories": [
+    "email",
+    "email newsletters",
+    "marketing automation"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "matterport",
+   "name": "Matterport",
+   "website": "https://matterport.com/",
+   "categories": [
+    "developer tools",
+    "images & design"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "metaads",
+   "name": "Meta Ads",
+   "website": "https://business.meta.com/",
+   "categories": [
+    "ads & conversion",
+    "social media marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "microsoft_advertising",
+   "name": "Microsoft Advertising",
+   "website": "https://ads.microsoft.com/",
+   "categories": [
+    "ads & conversion",
+    "marketing",
+    "analytics"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "microsoft_bookings",
+   "name": "Microsoft Bookings",
+   "website": "https://www.microsoft.com/en-us/microsoft-365/business/scheduling-and-booking-app",
+   "categories": [
+    "scheduling & booking",
+    "calendar"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "microsoft_entra_id",
+   "name": "Microsoft Entra ID",
+   "website": "https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id",
+   "categories": [
+    "security & identity tools",
+    "it operations"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "onenote",
+   "name": "Microsoft OneNote",
+   "website": "https://www.onenote.com",
+   "categories": [
+    "productivity",
+    "notes"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "microsoft_power_bi",
+   "name": "Microsoft Power Bi",
+   "website": "https://powerbi.microsoft.com/",
+   "categories": [
+    "business intelligence",
+    "analytics",
+    "dashboards"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "microsoft_powerpoint",
+   "name": "Microsoft PowerPoint",
+   "website": "https://www.microsoft.com/microsoft-365/powerpoint",
+   "categories": [
+    "documents",
+    "productivity",
+    "file management & storage"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "microsoft_teams",
+   "name": "Microsoft Teams",
+   "website": "https://www.microsoft.com/",
+   "categories": [
+    "team chat",
+    "team collaboration",
+    "video conferencing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "microsoft_todo",
+   "name": "Microsoft To Do",
+   "website": "https://to-do.office.com",
+   "categories": [
+    "task management",
+    "productivity"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "microsoft_word",
+   "name": "Microsoft Word",
+   "website": "https://www.microsoft.com/microsoft-365/word",
+   "categories": [
+    "documents",
+    "file management & storage",
+    "productivity"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "miro",
+   "name": "Miro",
+   "website": "https://miro.com/",
+   "categories": [
+    "team collaboration",
+    "project management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "monday",
+   "name": "Monday",
+   "website": "https://monday.com/",
+   "categories": [
+    "project management",
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "money_forward",
+   "name": "Money Forward",
+   "website": "https://biz.moneyforward.com/accounting/",
+   "categories": [
+    "accounting"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "moneybird",
+   "name": "Moneybird",
+   "website": "https://moneybird.com",
+   "categories": [
+    "accounting",
+    "proposal & invoice management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "mural",
+   "name": "Mural",
+   "website": "https://www.mural.co",
+   "categories": [
+    "team collaboration",
+    "images & design"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "neo4j",
+   "name": "Neo4J",
+   "website": "https://neo4j.com",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "neon",
+   "name": "Neon",
+   "website": "https://neon.tech/",
+   "categories": [
+    "databases",
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "netsuite",
+   "name": "Netsuite",
+   "website": "https://www.netsuite.com",
+   "categories": [
+    "accounting",
+    "ecommerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "notebook_lm",
+   "name": "NotebookLM",
+   "website": "https://notebooklm.google.com/enterprise",
+   "categories": [
+    "ai assistants",
+    "notes",
+    "education"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "notion",
+   "name": "Notion",
+   "website": "https://www.notion.so",
+   "categories": [
+    "notes",
+    "documents",
+    "project management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "omnisend",
+   "name": "Omnisend",
+   "website": "https://www.omnisend.com/",
+   "categories": [
+    "marketing automation",
+    "email newsletters"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "one_drive",
+   "name": "OneDrive",
+   "website": "https://www.microsoft.com/en-in/microsoft-365/onedrive/online-cloud-storage/",
+   "categories": [
+    "file management & storage"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "outlook",
+   "name": "Outlook",
+   "website": "https://www.microsoft.com/en-in/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook",
+   "categories": [
+    "email",
+    "calendar"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "pagerduty",
+   "name": "PagerDuty",
+   "website": "https://www.pagerduty.com",
+   "categories": [
+    "server monitoring",
+    "notifications"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "parma",
+   "name": "Parma",
+   "website": "https://app.parma.ai",
+   "categories": [
+    "crm",
+    "contact management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "zettle",
+   "name": "PayPal Zettle",
+   "website": "https://www.zettle.com",
+   "categories": [
+    "commerce",
+    "payment processing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "pinecone",
+   "name": "Pinecone",
+   "website": "https://www.pinecone.io/",
+   "categories": [
+    "artificial intelligence",
+    "databases"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "pinterest",
+   "name": "Pinterest",
+   "website": "https://www.pinterest.com",
+   "categories": [
+    "social media accounts",
+    "marketing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "pinterest_ads",
+   "name": "Pinterest Ads",
+   "website": "https://www.pinterest.com/business/",
+   "categories": [
+    "ads & conversion",
+    "marketing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "pipedrive",
+   "name": "Pipedrive",
+   "website": "https://www.pipedrive.com/",
+   "categories": [
+    "crm",
+    "sales & crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "planetscale",
+   "name": "PlanetScale",
+   "website": "https://planetscale.com",
+   "categories": [
+    "databases",
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "prisma",
+   "name": "Prisma",
+   "website": "https://console.prisma.io/",
+   "categories": [
+    "databases",
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "productboard",
+   "name": "Productboard",
+   "website": "https://www.productboard.com",
+   "categories": [
+    "product management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "pushbullet",
+   "name": "Pushbullet",
+   "website": "https://www.pushbullet.com/",
+   "categories": [
+    "notifications",
+    "file management & storage"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "quickbooks",
+   "name": "QuickBooks",
+   "website": "https://quickbooks.intuit.com",
+   "categories": [
+    "accounting",
+    "payment processing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "quire",
+   "name": "Quire",
+   "website": "https://quire.io",
+   "categories": [
+    "project management",
+    "task management",
+    "team collaboration"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "railway",
+   "name": "Railway",
+   "website": "https://railway.com",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "railway_mcp",
+   "name": "Railway MCP",
+   "website": "https://mcp.railway.com",
+   "categories": [
+    "developer tools",
+    "it operations",
+    "model context protocol"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "ramp",
+   "name": "Ramp",
+   "website": "https://ramp.com/",
+   "categories": [
+    "accounting"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "razorpay",
+   "name": "Razorpay",
+   "website": "https://razorpay.com",
+   "categories": [
+    "payment processing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "rd_station_marketing",
+   "name": "RD Station Marketing",
+   "website": "https://www.rdstation.com/",
+   "categories": [
+    "marketing automation",
+    "marketing",
+    "crm"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "rebrandly",
+   "name": "Rebrandly",
+   "website": "https://www.rebrandly.com",
+   "categories": [
+    "url shortener",
+    "marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "recruitee",
+   "name": "Recruitee",
+   "website": "https://recruitee.com",
+   "categories": [
+    "hr talent & recruitment"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "reddit",
+   "name": "Reddit",
+   "website": "https://www.reddit.com",
+   "categories": [
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "reddit_ads",
+   "name": "Reddit Ads",
+   "website": "https://ads.reddit.com",
+   "categories": [
+    "marketing",
+    "ads & conversion"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "resend",
+   "name": "Resend",
+   "website": "https://resend.com",
+   "categories": [
+    "email",
+    "transactional email"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "roam",
+   "name": "Roam",
+   "website": "https://ro.am",
+   "categories": [
+    "communication",
+    "productivity"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "salesforce",
+   "name": "Salesforce",
+   "website": "https://www.salesforce.com/in/",
+   "categories": [
+    "crm",
+    "contact management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "salesforce_service_cloud",
+   "name": "Salesforce Service Cloud",
+   "website": "https://www.salesforce.com/service/",
+   "categories": [
+    "crm",
+    "customer support"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "scheduleonce",
+   "name": "Scheduleonce",
+   "website": "https://www.oncehub.com/",
+   "categories": [
+    "scheduling & booking"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "sendloop",
+   "name": "Sendloop",
+   "website": "https://sendloop.com/",
+   "categories": [
+    "email newsletters",
+    "marketing automation"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "sentry",
+   "name": "Sentry",
+   "website": "https://sentry.io/welcome/",
+   "categories": [
+    "developer tools",
+    "server monitoring"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "servicem8",
+   "name": "Servicem8",
+   "website": "https://www.servicem8.com",
+   "categories": [
+    "scheduling & booking",
+    "proposal & invoice management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "servicenow",
+   "name": "ServiceNow",
+   "website": "https://www.servicenow.com",
+   "categories": [
+    "it operations",
+    "customer support"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "share_point",
+   "name": "SharePoint",
+   "website": "https://www.microsoft.com/en-in/microsoft-365/sharepoint/collaboration/",
+   "categories": [
+    "documents",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "sharepoint_graph",
+   "name": "SharePoint Graph",
+   "website": "https://www.microsoft.com/en-in/microsoft-365/sharepoint/collaboration/",
+   "categories": [
+    "documents",
+    "team collaboration",
+    "file management & storage"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "shippo",
+   "name": "Shippo",
+   "website": "https://goshippo.com/",
+   "categories": [
+    "ecommerce"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "shopify",
+   "name": "Shopify",
+   "website": "https://www.shopify.com",
+   "categories": [
+    "ecommerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "sign_now",
+   "name": "SignNow",
+   "website": "https://www.signnow.com",
+   "categories": [
+    "signatures",
+    "documents"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "slack",
+   "name": "Slack",
+   "website": "https://slack.com/intl/en-in//",
+   "categories": [
+    "team chat",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "slackbot",
+   "name": "Slackbot",
+   "website": "https://slack.com/intl/en-in/",
+   "categories": [
+    "team chat",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "smartsheet",
+   "name": "Smartsheet",
+   "website": "https://www.smartsheet.com",
+   "categories": [
+    "project management",
+    "spreadsheets",
+    "task management"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "snapchat",
+   "name": "Snapchat",
+   "website": "https://www.snapchat.com",
+   "categories": [
+    "marketing",
+    "social media marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "snowflake",
+   "name": "Snowflake",
+   "website": "https://www.snowflake.com/en/",
+   "categories": [
+    "databases",
+    "analytics"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "snyk",
+   "name": "Snyk",
+   "website": "https://snyk.io",
+   "categories": [
+    "security & identity tools",
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "soundcloud",
+   "name": "SoundCloud",
+   "website": "https://soundcloud.com",
+   "categories": [
+    "video & audio",
+    "lifestyle & entertainment"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "splitwise",
+   "name": "Splitwise",
+   "website": "https://splitwise.com",
+   "categories": [
+    "accounting"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "spotify",
+   "name": "Spotify",
+   "website": "https://spotify.com",
+   "categories": [
+    "news & lifestyle"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "square",
+   "name": "Square",
+   "website": "https://squareup.com",
+   "categories": [
+    "payment processing",
+    "ecommerce"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "stack_exchange",
+   "name": "Stack Exchange",
+   "website": "https://www.stackexchange.com",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "storyblok",
+   "name": "Storyblok",
+   "website": "https://www.storyblok.com",
+   "categories": [
+    "developer tools",
+    "website builders"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "stripe",
+   "name": "Stripe",
+   "website": "https://stripe.com",
+   "categories": [
+    "payment processing",
+    "ecommerce"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "supabase",
+   "name": "Supabase",
+   "website": "https://supabase.com",
+   "categories": [
+    "developer tools",
+    "databases"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "survey_monkey",
+   "name": "SurveyMonkey",
+   "website": "https://www.surveymonkey.com",
+   "categories": [
+    "forms & surveys",
+    "analytics"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "tally",
+   "name": "Tally",
+   "website": "https://tally.so/",
+   "categories": [
+    "forms & surveys"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "threads",
+   "name": "Threads",
+   "website": "https://www.threads.com",
+   "categories": [
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "ticketmaster",
+   "name": "Ticketmaster",
+   "website": "https://developer.ticketmaster.com/",
+   "categories": [
+    "event management",
+    "lifestyle & entertainment"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "ticktick",
+   "name": "Ticktick",
+   "website": "https://ticktick.com",
+   "categories": [
+    "productivity",
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "tiktok",
+   "name": "Tiktok",
+   "website": "https://www.tiktok.com",
+   "categories": [
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "tiktok_ads",
+   "name": "TikTok Ads",
+   "website": "https://business.tiktok.com/",
+   "categories": [
+    "marketing",
+    "ads & conversion",
+    "analytics"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "timely",
+   "name": "Timely",
+   "website": "https://www.timelyapp.com",
+   "categories": [
+    "time tracking software",
+    "productivity"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "todoist",
+   "name": "Todoist",
+   "website": "https://www.todoist.com/",
+   "categories": [
+    "task management",
+    "productivity"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "toneden",
+   "name": "Toneden",
+   "website": "https://www.toneden.io/",
+   "categories": [
+    "social media marketing",
+    "marketing automation"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "trello",
+   "name": "Trello",
+   "website": "https://trello.com",
+   "categories": [
+    "project management",
+    "task management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "twitch",
+   "name": "Twitch",
+   "website": "https://www.twitch.tv/",
+   "categories": [
+    "video & audio",
+    "gaming"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "twitter",
+   "name": "Twitter",
+   "website": "https://x.com",
+   "categories": [
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "typeform",
+   "name": "Typeform",
+   "website": "https://www.typeform.com",
+   "categories": [
+    "forms & surveys",
+    "productivity"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "vercel",
+   "name": "Vercel",
+   "website": "https://vercel.com",
+   "categories": [
+    "developer tools"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "vibe",
+   "name": "Vibe",
+   "website": "https://www.vibe.co",
+   "categories": [
+    "ads & conversion",
+    "marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "vimeo",
+   "name": "Vimeo",
+   "website": "https://vimeo.com",
+   "categories": [
+    "video & audio",
+    "social media accounts"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "wakatime",
+   "name": "WakaTime",
+   "website": "https://wakatime.com/",
+   "categories": [
+    "time tracking software",
+    "developer tools"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "webex",
+   "name": "Webex",
+   "website": "https://www.webex.com/",
+   "categories": [
+    "video conferencing",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "webflow",
+   "name": "Webflow",
+   "website": "https://webflow.com",
+   "categories": [
+    "website builders",
+    "ecommerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "whatsapp",
+   "name": "WhatsApp",
+   "website": "https://web.whatsapp.com/",
+   "categories": [
+    "phone & sms",
+    "communication"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "whop",
+   "name": "Whop",
+   "website": "https://whop.com",
+   "categories": [
+    "ecommerce",
+    "payment processing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "wix",
+   "name": "Wix",
+   "website": "https://www.wix.com",
+   "categories": [
+    "website builders",
+    "ecommerce"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "wordpress_com",
+   "name": "WordPress.com",
+   "website": "https://wordpress.com",
+   "categories": [
+    "content & files",
+    "website & app building"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "workable",
+   "name": "Workable",
+   "website": "https://www.workable.com/",
+   "categories": [
+    "human resources",
+    "hr talent & recruitment"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "workday",
+   "name": "Workday",
+   "website": "https://www.workday.com",
+   "categories": [
+    "human resources",
+    "accounting"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "wrike",
+   "name": "Wrike",
+   "website": "https://www.wrike.com",
+   "categories": [
+    "project management",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "x_mcp",
+   "name": "X MCP",
+   "website": "https://api.x.com/mcp",
+   "categories": [
+    "model context protocol",
+    "social media accounts",
+    "social media marketing"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "xero",
+   "name": "Xero",
+   "website": "https://www.xero.com/",
+   "categories": [
+    "accounting"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "yandex",
+   "name": "Yandex",
+   "website": "https://yandex.com/",
+   "categories": [
+    "email"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "ynab",
+   "name": "YNAB",
+   "website": "https://www.ynab.com",
+   "categories": [
+    "accounting"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "youtube",
+   "name": "YouTube",
+   "website": "https://www.youtube.com",
+   "categories": [
+    "video & audio",
+    "social media accounts"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zendesk",
+   "name": "Zendesk",
+   "website": "https://www.zendesk.com/",
+   "categories": [
+    "crm",
+    "customer support"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zeplin",
+   "name": "Zeplin",
+   "website": "https://zeplin.io",
+   "categories": [
+    "images & design",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho",
+   "name": "Zoho",
+   "website": "https://www.zoho.com",
+   "categories": [
+    "crm",
+    "marketing automation"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho_bigin",
+   "name": "Zoho Bigin",
+   "website": "https://www.bigin.com",
+   "categories": [
+    "crm",
+    "contact management"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho_books",
+   "name": "Zoho Books",
+   "website": "https://www.zoho.com/us/books/",
+   "categories": [
+    "accounting"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho_calendar",
+   "name": "Zoho Calendar",
+   "website": "https://www.zoho.com/calendar/",
+   "categories": [
+    "calendar",
+    "scheduling & booking",
+    "productivity"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "zoho_campaigns",
+   "name": "Zoho Campaigns",
+   "website": "https://www.zoho.com/campaigns/",
+   "categories": [
+    "marketing automation",
+    "email newsletters"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "zoho_desk",
+   "name": "Zoho Desk",
+   "website": "https://www.zoho.com/desk",
+   "categories": [
+    "crm",
+    "customer support"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho_inventory",
+   "name": "Zoho Inventory",
+   "website": "https://www.zoho.com/us/inventory/",
+   "categories": [
+    "accounting",
+    "ecommerce"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho_invoice",
+   "name": "Zoho Invoice",
+   "website": "https://www.zoho.com/us/invoice/",
+   "categories": [
+    "proposal & invoice management",
+    "accounting"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho_mail",
+   "name": "Zoho Mail",
+   "website": "https://www.zoho.com/mail/",
+   "categories": [
+    "email",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoho_recruit",
+   "name": "Zoho Recruit",
+   "website": "https://www.zoho.com/recruit/",
+   "categories": [
+    "hr talent & recruitment",
+    "human resources"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "zoho_sign",
+   "name": "Zoho Sign",
+   "website": "https://www.zoho.com/sign/",
+   "categories": [
+    "signatures",
+    "documents"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "zoho_work_drive",
+   "name": "Zoho WorkDrive",
+   "website": "https://www.zoho.com/workdrive/",
+   "categories": [
+    "file management & storage",
+    "content & files",
+    "documents"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "zoom",
+   "name": "Zoom",
+   "website": "https://www.zoom.com/",
+   "categories": [
+    "video conferencing",
+    "team collaboration"
+   ],
+   "managed": true
+  },
+  {
+   "slug": "zoom_chat",
+   "name": "Zoom Team Chat",
+   "website": "https://www.zoom.com/en/products/team-chat/",
+   "categories": [
+    "team chat",
+    "communication"
+   ],
+   "managed": false
+  },
+  {
+   "slug": "zoominfo",
+   "name": "Zoominfo",
+   "website": "https://www.zoominfo.com/",
+   "categories": [
+    "crm",
+    "ai sales tools"
+   ],
+   "managed": false
+  }
+ ]
+}

@@ -1,0 +1,638 @@
+{
+  "checked_at": "2026-10-28",
+  "method": "Each source_url was fetched with curl on 2026-10-28 and converted to plain text (HTML tags stripped, whitespace runs collapsed). Every quote is a verbatim substring of that text after whitespace normalization (newlines/multiple spaces -> single space). Values: true/false/null. 'CONDITIONAL' in a note means the docs make the requirement depend on tenant/workspace policy or on which product/scope is used.",
+  "apps": [
+    {
+      "slug": "github",
+      "name": "GitHub",
+      "scopes_assumed": "OAuth App (not GitHub App) with classic scopes repo, read:user, user:email",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app",
+          "quote": "You can create and register an OAuth app under your personal account or under any organization you have administrative access to.",
+          "note": "Registration is a settings form ending in 'Click Register application.' A user or organization can own up to 100 OAuth apps."
+        },
+        "dev_use_without_review": {
+          "value": true,
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+          "quote": "You can enable other users to authorize your OAuth app.",
+          "note": "The full registration procedure on the creating-an-oauth-app page has no review step; the app is usable immediately after 'Click Register application.'"
+        },
+        "production_review_required": {
+          "value": false,
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+          "quote": "You can enable other users to authorize your OAuth app.",
+          "note": "No GitHub review of OAuth apps appears in the documented process. CONDITIONAL blocker per organization: when an org has OAuth app access restrictions enabled (the default for new orgs), an org owner must approve the app before it can reach that org's private resources (see stages)."
+        },
+        "security_assessment_required": {
+          "value": false,
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app",
+          "quote": "Click Register application.",
+          "note": "The complete registration procedure on this page contains no security assessment requirement."
+        },
+        "business_verification_required": {
+          "value": false,
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app",
+          "quote": "You can create and register an OAuth app under your personal account or under any organization you have administrative access to.",
+          "note": "No business/identity verification step in the documented registration procedure. (GitHub Marketplace has a separate 'Publisher verification' listed in nav; it applies only to Marketplace listings and was not fetched/verified.)"
+        },
+        "paid_plan_required": {
+          "value": false,
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app",
+          "quote": "You can create and register an OAuth app under your personal account or under any organization you have administrative access to.",
+          "note": "No plan requirement appears in the registration procedure."
+        },
+        "partner_program_required": {
+          "value": false,
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app",
+          "quote": "You can create and register an OAuth app under your personal account or under any organization you have administrative access to.",
+          "note": "No partner program appears in the documented registration procedure."
+        }
+      },
+      "stages": [
+        {
+          "audience": "anyone",
+          "user_cap": null,
+          "unlocked_by": "Registering the OAuth app (no review)",
+          "source_url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+          "quote": "You can enable other users to authorize your OAuth app."
+        },
+        {
+          "audience": "anyone (access to a restricted organization's private resources)",
+          "user_cap": null,
+          "unlocked_by": "Approval by that organization's owner when OAuth app access restrictions are enabled (default for new organizations)",
+          "source_url": "https://docs.github.com/en/organizations/managing-oauth-access-to-your-organizations-data/about-oauth-app-access-restrictions",
+          "quote": "When OAuth app access restrictions are enabled, organization members and outside collaborators cannot authorize OAuth app access to organization resources. Users can request owner approval for OAuth apps they'd like to use, and organization owners receive a notification of pending requests."
+        }
+      ],
+      "review_wait": null,
+      "extra_quotes": [
+        {
+          "source_url": "https://docs.github.com/en/organizations/managing-oauth-access-to-your-organizations-data/about-oauth-app-access-restrictions",
+          "quote": "When you create a new organization, OAuth app access restrictions are enabled by default. Organization owners can disable OAuth app access restrictions at any time."
+        }
+      ]
+    },
+    {
+      "slug": "slack",
+      "name": "Slack",
+      "scopes_assumed": "Bot scopes channels:history and chat:write (reading via conversations.history, posting via chat.postMessage), distributed to other workspaces via OAuth v2",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://docs.slack.dev/app-management/distribution/",
+          "quote": "When you create a Slack app, you associate it with a workspace: to do this, open the app dashboard for your app and click Install App to Workspace within the Install App section.",
+          "note": "Creation and installation are done in the app dashboard; no contact with Slack."
+        },
+        "dev_use_without_review": {
+          "value": true,
+          "source_url": "https://docs.slack.dev/app-management/distribution/",
+          "quote": "Once created, your app can be installed to its associated workspace without any code for handling authorization.",
+          "note": "Usable at once in the app's own (development) workspace."
+        },
+        "production_review_required": {
+          "value": false,
+          "source_url": "https://docs.slack.dev/app-management/distribution/",
+          "quote": "Installing your app on other workspaces means that you'll need to set up an OAuth 2.0 flow. Once you've done that, your app will be able to generate access tokens for each workspace and user.",
+          "note": "CONDITIONAL / de facto. Technically, 'Activate Public Distribution' (unlisted) lets any workspace install with no Slack review. But (1) since 2025-05-29 commercially distributed non-Marketplace apps get conversations.history/conversations.replies cut to Tier 1 (1 request per minute, max 15 objects) -> channels:history use is crippled without Marketplace approval; (2) Slack's updated API terms say the Marketplace is the only appropriate channel for commercial distribution; (3) some workspaces only allow Marketplace-listed apps. A guide saying 'Marketplace review is required for a commercial agent integration that reads channel history' is supported; 'you cannot install in other workspaces without review' is not."
+        },
+        "security_assessment_required": {
+          "value": false,
+          "source_url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps/",
+          "quote": "While Slack does not certify or endorse apps, before an app can be published on the Marketplace, we perform a security review and analyze the scopes that an application requests in light of its functionality.",
+          "note": "No third-party assessment. Slack's own security/scope review happens only as part of Marketplace review."
+        },
+        "business_verification_required": {
+          "value": false,
+          "source_url": "https://docs.slack.dev/app-management/distribution/",
+          "quote": "Ensure all items in the supplied checklist are completed.",
+          "note": "The unlisted-distribution procedure (dashboard > Manage Distribution > checklist > Activate Public Distribution) has no business verification step. The Marketplace review guide fetched also lists none; it asks for test credentials and a demo video."
+        },
+        "paid_plan_required": {
+          "value": false,
+          "source_url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps/",
+          "quote": "Slack does not charge for Marketplace inclusion, so it is open to developers who meet Marketplace guidelines and submit for review.",
+          "note": "No paid plan requirement appears for creating/distributing the app either (distribution guide). Whether a free-plan workspace can serve as the dev workspace was not separately verified."
+        },
+        "partner_program_required": {
+          "value": false,
+          "source_url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps/",
+          "quote": "Slack does not charge for Marketplace inclusion, so it is open to developers who meet Marketplace guidelines and submit for review.",
+          "note": "Marketplace is a review against published guidelines, not a selective partner program. Prerequisite: 10+ active workspace installs before you can submit."
+        }
+      },
+      "stages": [
+        {
+          "audience": "only_you (the app's own development workspace)",
+          "user_cap": null,
+          "unlocked_by": "Creating the app and clicking Install App to Workspace",
+          "source_url": "https://docs.slack.dev/app-management/distribution/",
+          "quote": "By default, a newly built Slack app can only be installed in its associated workspace as mentioned above."
+        },
+        {
+          "audience": "anyone (any workspace, unlisted) - with reduced conversations.history limits for commercial apps",
+          "user_cap": null,
+          "unlocked_by": "Implementing OAuth v2 and clicking Activate Public Distribution (no review)",
+          "source_url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps/",
+          "quote": "conversations.history - The conversations.history API method rate limit for commercially distributed apps created after May 29, 2025, and for net new installations of existing apps, will be limited to 1 request per minute, unless they are approved for the Slack Marketplace. The maximum and default for the limit parameter has been reduced to 15 objects."
+        },
+        {
+          "audience": "anyone (Slack Marketplace listing, direct install, normal rate limits)",
+          "user_cap": null,
+          "unlocked_by": "10+ active workspace installs, then passing Slack Marketplace review (preliminary + functional)",
+          "source_url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide/",
+          "quote": "Your app has been installed on 10 or more active workspaces and the service has been tested on those workspaces in accordance with the above bullet. An active workspace is a workspace that has been used in the past 28 days."
+        }
+      ],
+      "review_wait": {
+        "text": "Marketplace review: preliminary feedback up to 10 business days; functional review up to 10 weeks for new submissions (6 weeks for published apps resubmitting). Applies only to Marketplace listing.",
+        "source_url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide/",
+        "quote": "Currently, the preliminary part of the review takes up to 10 business days to receive feedback, while the functional review takes up to 10 weeks for new submissions and 6 weeks for published apps resubmitting changes."
+      },
+      "extra_quotes": [
+        {
+          "source_url": "https://docs.slack.dev/app-management/distribution/",
+          "quote": "Some workspaces will restrict app installation so that only workspace administrators can provide authorization. Other workspaces may only allow the installation of apps officially listed in the Slack Marketplace."
+        },
+        {
+          "source_url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps/",
+          "quote": "Internal customer-built applications are not impacted by these changes."
+        }
+      ]
+    },
+    {
+      "slug": "gmail",
+      "name": "Gmail (Google OAuth / Google Workspace APIs)",
+      "scopes_assumed": "https://www.googleapis.com/auth/gmail.readonly (RESTRICTED) and https://www.googleapis.com/auth/gmail.send (SENSITIVE); External user type; server-side app",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://support.google.com/cloud/answer/13461325?hl=en",
+          "quote": "External: Apps configured with a user type of External are available to any user with a Google Account. Your app will start in the \"test mode\" and will only be available to users you add to the \"test users\" list.",
+          "note": "Project/consent-screen setup is self-serve in Cloud Console."
+        },
+        "dev_use_without_review": {
+          "value": true,
+          "source_url": "https://support.google.com/cloud/answer/15549945?hl=en",
+          "quote": "Projects configured with a publishing status of Testing are limited to up to 100 test users listed in the OAuth consent screen.",
+          "note": "Test users see a warning; their authorizations (and refresh tokens) expire 7 days after consent."
+        },
+        "production_review_required": {
+          "value": true,
+          "source_url": "https://support.google.com/cloud/answer/15549945?hl=en",
+          "quote": "Projects configured with a publishing status of In production are available to any user with a Google Account. A project's publishing status is considered In production after selecting the Publish app button. Your project's configuration may be subject to verification before its name and logo are displayed on an authorization screen or before it may request authorization of sensitive or restricted scopes.",
+          "note": "gmail.send needs sensitive-scope verification; gmail.readonly needs restricted-scope verification. An unverified In-production app is limited to 100 new users over the project's lifetime and shows the unverified-app screen. Exemptions: personal use, testing, Internal (Workspace-org-only) apps."
+        },
+        "security_assessment_required": {
+          "value": true,
+          "source_url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+          "quote": "If you store restricted scope data on servers (or transmit), then you must go through a security assessment.",
+          "note": "Required because gmail.readonly is restricted and the agent backend handles the data server-side. Annual CASA assessment by a Google-empanelled assessor. gmail.send alone (sensitive) does not require it."
+        },
+        "business_verification_required": {
+          "value": true,
+          "source_url": "https://support.google.com/cloud/answer/13463817?hl=en",
+          "quote": "Ensure that an app accurately represents its identity and intent per the Google API policy by verifying the logo, display name, URLs, domain ownership, etc.",
+          "note": "This is Brand Verification of app identity and domain ownership, not legal-entity/business-document verification. A guide saying 'verify your domain/brand' is correct; one saying 'submit business registration documents' is not supported by the fetched pages."
+        },
+        "paid_plan_required": {
+          "value": false,
+          "source_url": "https://developers.google.com/workspace/gmail/api/reference/quota",
+          "quote": "All standard use of the Gmail API is available at no additional cost.",
+          "note": "Same page: exceeding quota limits 'is planned to incur charges to your Google Cloud billing account later in 2026'. Separate cost: the CASA security assessment may be paid to the assessor (FAQ: 'If you are in scope for the free tier 2 assessment and choose to reachout to the authorized assessors you will be required to pay the authorized assessor directly.')."
+        },
+        "partner_program_required": {
+          "value": false,
+          "source_url": "https://support.google.com/cloud/answer/13463817?hl=en",
+          "quote": "There are three types of verification that Google requires to access user data via OAuth.",
+          "note": "The three verification types (brand, sensitive, restricted) are the documented gates; no partner program."
+        }
+      },
+      "stages": [
+        {
+          "audience": "test_users",
+          "user_cap": 100,
+          "unlocked_by": "Default publishing status Testing; add test users on the OAuth consent screen",
+          "source_url": "https://support.google.com/cloud/answer/15549945?hl=en",
+          "quote": "Projects configured with a publishing status of Testing are limited to up to 100 test users listed in the OAuth consent screen."
+        },
+        {
+          "audience": "anyone, unverified (unverified-app warning screen)",
+          "user_cap": 100,
+          "unlocked_by": "Clicking Publish app without completing verification; cap is 100 new users for the project's lifetime",
+          "source_url": "https://support.google.com/cloud/answer/15549945?hl=en",
+          "quote": "The user cap limits the number of users that can grant permission to your app when requesting unapproved sensitive or restricted scopes. The user cap applies over the entire lifetime of the project, and it cannot be reset or changed."
+        },
+        {
+          "audience": "anyone",
+          "user_cap": null,
+          "unlocked_by": "Brand verification + sensitive-scope verification (gmail.send) + restricted-scope verification incl. annual CASA security assessment (gmail.readonly)",
+          "source_url": "https://support.google.com/cloud/answer/15549945?hl=en",
+          "quote": "Verified apps will still display the user cap on this page, but the user cap does not apply if you are requesting only approved sensitive or restricted scopes."
+        }
+      ],
+      "review_wait": {
+        "text": "Official Google pages disagree on sensitive-scope timing: developers.google.com says 'typically takes 3-5 business days'; the support.google.com verification FAQ table says Brand 2-3 business days, Sensitive 10 business days, Restricted 6 weeks (estimates not guaranteed). Restricted page: 'can potentially take several weeks'. Unverified-apps page: verification 'might require several months' depending on data sensitivity.",
+        "source_url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/sensitive-scope-verification",
+        "quote": "The sensitive scope verification process typically takes 3-5 business days to complete."
+      },
+      "extra_quotes": [
+        {
+          "source_url": "https://support.google.com/cloud/answer/13463817?hl=en",
+          "quote": "10 Business days"
+        },
+        {
+          "source_url": "https://support.google.com/cloud/answer/13463817?hl=en",
+          "quote": "* Please note that these estimates are not guaranteed and will vary based on developer responsiveness"
+        },
+        {
+          "source_url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
+          "quote": "For this reason, the restricted scopes verification process can potentially take several weeks to complete. Note that all apps must complete the brand verification step first, which typically takes 2-3 business days, if branding information has changed since the last approved OAuth consent screen verification."
+        },
+        {
+          "source_url": "https://support.google.com/cloud/answer/13465431?hl=en",
+          "quote": "To maintain the security of Google users' data, applications requesting access to restricted scopes must undergo an annual security assessment."
+        },
+        {
+          "source_url": "https://support.google.com/cloud/answer/7454865?hl=en",
+          "quote": "Depending on the sensitivity of the data being requested, verification might require several months for the app to complete."
+        },
+        {
+          "source_url": "https://support.google.com/cloud/answer/15549945?hl=en",
+          "quote": "Authorizations by a test user will expire seven days from the time of consent."
+        }
+      ],
+      "disagreements_settled": "'3-5 business days' vs '10 business days' for sensitive scopes: BOTH figures are on official Google pages as of 2026-10-28. developers.google.com/identity/protocols/oauth2/production-readiness/sensitive-scope-verification: 'The sensitive scope verification process typically takes 3-5 business days to complete.' support.google.com/cloud/answer/13463817 (OAuth verification FAQ) table: Sensitive Scope Verification '10 Business days', with '* Please note that these estimates are not guaranteed and will vary based on developer responsiveness'. Neither analysis is wrong; a correct guide should cite a range (3-10 business days, not guaranteed). Restricted scopes are different: gmail.readonly is listed under 'Restricted scopes' (gmail.send under 'Sensitive scopes') on developers.google.com/workspace/gmail/api/auth/scopes; restricted verification is '6 weeks' in the FAQ table / 'can potentially take several weeks' on the restricted-scope page, plus brand verification (2-3 business days) first, plus an annual CASA security assessment by a Google-empanelled assessor when restricted data is stored on or transmitted through servers."
+    },
+    {
+      "slug": "notion",
+      "name": "Notion",
+      "scopes_assumed": "Public connection (formerly 'public integration') via OAuth 2.0 with read/update/insert content capabilities; installation scope 'Any workspace'. Notion has capabilities, not OAuth scopes.",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://developers.notion.com/guides/get-started/authorization",
+          "quote": "Navigate to the Developer portal and create a new public connection.",
+          "note": "Notion renamed 'integrations' to 'connections'; old developers.notion.com/docs/* URLs redirect to /guides/get-started/*."
+        },
+        "dev_use_without_review": {
+          "value": true,
+          "source_url": "https://developers.notion.com/guides/get-started/overview",
+          "quote": "You can create and use a public connection without listing it.",
+          "note": null
+        },
+        "production_review_required": {
+          "value": false,
+          "source_url": "https://developers.notion.com/guides/get-started/marketplace-listing",
+          "quote": "No. Public connections work independently of Marketplace listings. Listing on the Marketplace is optional and helps your connection reach a wider audience, but your connection can be used via its OAuth flow without being listed.",
+          "note": "Review applies only to the optional Marketplace listing. Caveat: the Authorization guide still contains the sentence 'The Authorization URL field populates after a public connection is submitted for review', which conflicts with the overview/marketplace pages and the public-connections guide (which says to find the authorization URL in the Configuration tab). Treat as a stale leftover, but it is on an official page."
+        },
+        "security_assessment_required": {
+          "value": false,
+          "source_url": "https://developers.notion.com/guides/get-started/overview",
+          "quote": "Public connections must undergo a Notion security review before being listed on the Marketplace. You can create and use a public connection without listing it.",
+          "note": "Notion's own security review, and only for Marketplace listing; no third-party assessment."
+        },
+        "business_verification_required": {
+          "value": false,
+          "source_url": "https://developers.notion.com/guides/get-started/public-connections",
+          "quote": "Click Create new connection and fill in the required fields, including:",
+          "note": "Required fields listed: connection name and development workspace, redirect URI(s), installation scope, capabilities. No business verification step."
+        },
+        "paid_plan_required": {
+          "value": false,
+          "source_url": "https://developers.notion.com/guides/get-started/public-connections",
+          "quote": "Click Create new connection and fill in the required fields, including:",
+          "note": "No plan requirement appears in the creation procedure. (The authorization guide says creating an internal connection requires being a workspace owner; plan restrictions are documented only for personal access tokens on Business/Enterprise.)"
+        },
+        "partner_program_required": {
+          "value": false,
+          "source_url": "https://developers.notion.com/guides/get-started/public-connections",
+          "quote": "Click Create new connection and fill in the required fields, including:",
+          "note": "No partner program in the documented procedure."
+        }
+      },
+      "stages": [
+        {
+          "audience": "selected workspaces only",
+          "user_cap": null,
+          "unlocked_by": "Choosing installation scope 'Selected workspaces only' at creation (fixed afterwards; not Marketplace-eligible)",
+          "source_url": "https://developers.notion.com/guides/get-started/public-connections",
+          "quote": "Installation scope is set once, at creation time, and can’t be changed afterward. If you pick Selected workspaces only and later want to list on the Marketplace, create a new connection."
+        },
+        {
+          "audience": "anyone",
+          "user_cap": null,
+          "unlocked_by": "Choosing installation scope 'Any workspace' at creation; no review",
+          "source_url": "https://developers.notion.com/guides/get-started/overview",
+          "quote": "Public connections use OAuth 2.0 for authentication. At creation time, you choose their installation scope: Any workspace (any Notion user can install; Marketplace-eligible) or Selected workspaces only (restricted to workspaces you select; not Marketplace-eligible)."
+        },
+        {
+          "audience": "anyone (discoverable in Notion Marketplace)",
+          "user_cap": null,
+          "unlocked_by": "Optional: submitting a Marketplace listing and passing Notion review",
+          "source_url": "https://developers.notion.com/guides/get-started/marketplace-listing",
+          "quote": "If approved, the listing appears in the Notion Marketplace. If changes are required, the Notion team sends feedback and you can resubmit after making updates."
+        }
+      ],
+      "review_wait": {
+        "text": "Only for the optional Marketplace listing: hear back within 5-10 business days. No wait for OAuth installs.",
+        "source_url": "https://developers.notion.com/guides/get-started/marketplace-listing",
+        "quote": "After submission, expect to hear back from our team within 5-10 business days via email."
+      },
+      "extra_quotes": [
+        {
+          "source_url": "https://developers.notion.com/guides/get-started/authorization",
+          "quote": "The Authorization URL field populates after a public connection is submitted for review"
+        }
+      ],
+      "disagreements_settled": "'4-8 weeks manual review' vs 'no review': official Notion docs support 'no review' for OAuth use. developers.notion.com/guides/get-started/marketplace-listing: 'No. Public connections work independently of Marketplace listings. ... your connection can be used via its OAuth flow without being listed.' and overview: 'You can create and use a public connection without listing it.' Review (incl. a Notion security review) applies only to the optional Marketplace listing, and its stated turnaround is 'within 5-10 business days', not 4-8 weeks. No official source for '4-8 weeks' was found. One caveat: the Authorization guide still says 'The Authorization URL field populates after a public connection is submitted for review', which contradicts the other pages."
+    },
+    {
+      "slug": "spotify",
+      "name": "Spotify (Web API)",
+      "scopes_assumed": "user-read-playback-state, user-modify-playback-state, playlist-read-private, playlist-modify-private (Authorization Code with PKCE)",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/apps",
+          "quote": "Your application is now registered, and you'll be redirected to the app overview page.",
+          "note": "Dashboard 'Create an App' + accept Developer Terms. Per the Feb 2026 migration guide, new developers were limited to 1 Client ID, raised to 25 in July 2026."
+        },
+        "dev_use_without_review": {
+          "value": true,
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Newly-created apps begin in development mode.",
+          "note": "Only allowlisted users (max 5), and only if the app owner has Spotify Premium."
+        },
+        "production_review_required": {
+          "value": true,
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "If your Partner Application form is approved, you can ask Spotify to move your app from development mode into extended quota mode. Spotify's app review team will take a look at your app and evaluate it for compliance with our Developer Policy.",
+          "note": "Two gates: partner application approval, then quota-extension app review."
+        },
+        "security_assessment_required": {
+          "value": false,
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Tell us about your app by filling out the provided questionnaire (4 steps)",
+          "note": "The documented extended-quota process (partner application + questionnaire + app review) contains no third-party security assessment."
+        },
+        "business_verification_required": {
+          "value": true,
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Please note that as of May 15th 2025, Spotify only accepts applications from organizations (not individuals).",
+          "note": "Implementation requirements include 'Established Business Entity (legally registered business or organisation)'; the application 'must be sent through a company email'. Applies to extended quota, not to development mode."
+        },
+        "paid_plan_required": {
+          "value": true,
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Note: The app owner must have a Spotify Premium account for apps in development mode to function.",
+          "note": "Consumer Spotify Premium subscription for the app owner (effective Feb 11, 2026 for new apps, Mar 9, 2026 for existing); not a paid API tier."
+        },
+        "partner_program_required": {
+          "value": true,
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Maintaining a minimum of active users (at least 250k MAUs)",
+          "note": "Extended quota requires an approved Partner Application ('Quota Extension Request for New Potential Partners') with criteria: registered business, launched service, 250k+ MAU, key markets, commercial viability."
+        }
+      },
+      "stages": [
+        {
+          "audience": "test_users (allowlisted in Users Management)",
+          "user_cap": 5,
+          "unlocked_by": "Creating the app (development mode) with a Premium owner account; adding each user to the allowlist",
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Up to 5 authenticated Spotify users can use an app that is in development mode — so you can share your app with beta testers, friends, or with fellow developers who are working on the app."
+        },
+        {
+          "audience": "anyone",
+          "user_cap": null,
+          "unlocked_by": "Approved Partner Application (organizations only, 250k+ MAU) then Quota Extension Request review",
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Apps in this category can be installed by an unlimited number of users and the allowlist in development mode no longer applies."
+        }
+      ],
+      "review_wait": {
+        "text": "Extended quota mode app review can take up to six weeks (after partner application approval; partner application turnaround not stated).",
+        "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+        "quote": "This review process can take up to six weeks."
+      },
+      "extra_quotes": [
+        {
+          "source_url": "https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide",
+          "quote": "All Development Mode apps require the app owner to have an active Spotify Premium subscription. If the owner's Premium subscription lapses, the app will stop working."
+        },
+        {
+          "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+          "quote": "Established Business Entity (legally registered business or organisation)"
+        }
+      ]
+    },
+    {
+      "slug": "microsoft",
+      "name": "Microsoft Graph / Outlook (Microsoft Entra app registration)",
+      "scopes_assumed": "Delegated Mail.Read (+ User.Read, offline_access); multitenant registration ('Multiple Entra ID tenants', optionally + personal Microsoft accounts)",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app",
+          "quote": "Browse to Entra ID > App registrations and select New registration.",
+          "note": "Prerequisites on the same page: 'An Azure account that has an active subscription. Create an account for free.' and the role 'at least an Application Developer'."
+        },
+        "dev_use_without_review": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/configure-user-consent",
+          "quote": "For example, by default, a user can consent to allow an app to access their mailbox but can't consent to allow an app unfettered access to read and write to all files in your organization.",
+          "note": "Delegated Mail.Read does not require admin consent (permissions reference: AdminConsentRequired Yes for Application, No for Delegated) and is available for personal Microsoft accounts."
+        },
+        "production_review_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app",
+          "quote": "For multitenant apps when you want users in any Microsoft Entra tenant to be able to use your application.",
+          "note": "CONDITIONAL. Microsoft does not review the app, but each customer tenant's consent policy decides: with risk-based step-up consent enabled, users can't consent to unverified multitenant apps registered after Nov 8, 2020 that request more than basic sign-in/profile; Microsoft recommends tenants allow user consent only for verified publishers; tenants may require admin consent."
+        },
+        "security_assessment_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+          "quote": "Other Microsoft programs, like Microsoft 365 App Certification, do provide this information.",
+          "note": "Microsoft 365 App Certification exists but no fetched page makes it a requirement for Mail.Read consent."
+        },
+        "business_verification_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+          "quote": "Beginning November 2020, if risk-based step-up consent is enabled, users can't consent to most newly registered multitenant apps that aren't publisher verified.",
+          "note": "CONDITIONAL. Not required to register or to be consented to by default, but publisher verification (organization verified via a Microsoft AI Cloud Partner Program account) is needed wherever tenants enable step-up consent or 'verified publishers only' user consent. In practice a guide that says 'get publisher verification for broad multitenant use' is supported."
+        },
+        "paid_plan_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+          "quote": "Microsoft doesn't charge developers for publisher verification. No license is required to become a verified publisher.",
+          "note": "Registration quickstart lists 'An Azure account that has an active subscription. Create an account for free.'"
+        },
+        "partner_program_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+          "quote": "The developer must have a Partner One ID for a valid Microsoft AI Cloud Partner Program account that has completed the verification process.",
+          "note": "CONDITIONAL. Only for (optional/policy-driven) publisher verification, and the docs describe CPP as an account to verify, not a selective acceptance program. Also requires a Microsoft Entra work/school account and a non-onmicrosoft.com publisher domain."
+        }
+      },
+      "stages": [
+        {
+          "audience": "only_you / your own tenant",
+          "user_cap": null,
+          "unlocked_by": "Registering with 'Single tenant only' (or using your own tenant/personal account)",
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app",
+          "quote": "For single-tenant apps for use only by users (or guests) in your tenant."
+        },
+        {
+          "audience": "anyone in other tenants / personal accounts, subject to each tenant's consent policy",
+          "user_cap": null,
+          "unlocked_by": "Choosing a multitenant account type; publisher verification needed where tenants enable risk-based step-up consent or verified-publisher-only consent",
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+          "quote": "The policy applies to apps that were registered after November 8, 2020, which use OAuth 2.0 to request permissions that extend beyond the basic sign-in and read user profile, and which request consent from users in tenants that aren't the tenant where the app is registered."
+        }
+      ],
+      "review_wait": {
+        "text": "No Microsoft app review. Publisher verification, once CPP prerequisites are met, 'can be verified in minutes' (CPP account verification time not stated).",
+        "source_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+        "quote": "Developers who have already met these requirements can be verified in minutes."
+      },
+      "extra_quotes": [
+        {
+          "source_url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+          "quote": "The Mail.Read delegated permission is available for consent in personal Microsoft accounts."
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/configure-user-consent",
+          "quote": "To reduce the risk of malicious applications attempting to trick users into granting them access to your organization's data, we recommend that you allow user consent only for applications that have been published by a verified publisher."
+        }
+      ]
+    },
+    {
+      "slug": "linkedin",
+      "name": "LinkedIn (Sign In with LinkedIn using OpenID Connect + Share on LinkedIn)",
+      "scopes_assumed": "Open (self-serve) products only: openid, profile, email, w_member_social (post as the authenticated member). Organization-page APIs are covered separately under slug linkedin-community-management.",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "quote": "The following permissions are available to all developers, and may be added via self-service through the LinkedIn Developer Portal, under the Products tab on your application page.",
+          "note": null
+        },
+        "dev_use_without_review": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "quote": "Open Permissions are the only permissions that are available to all developers without special approval.",
+          "note": null
+        },
+        "production_review_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "quote": "Open Permissions are the only permissions that are available to all developers without special approval.",
+          "note": "No review step is documented for these open products. Any other LinkedIn permission ('Most permissions and partner programs') needs explicit approval."
+        },
+        "security_assessment_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "quote": "Open Permissions are the only permissions that are available to all developers without special approval.",
+          "note": "No assessment documented for open permissions."
+        },
+        "business_verification_required": {
+          "value": null,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "quote": "LinkedIn products can be enabled after creating a new application.",
+          "note": "UNSETTLED. The fetched docs do not describe the Developer Portal app-creation form. Commonly reported requirement that an app be associated with (and verified by) a LinkedIn Page was NOT confirmed on any fetched official page."
+        },
+        "paid_plan_required": {
+          "value": null,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "quote": "The following permissions are available to all developers, and may be added via self-service through the LinkedIn Developer Portal, under the Products tab on your application page.",
+          "note": "UNSETTLED. No pricing statement found on the fetched pages; nothing indicates a paid plan, but no page states the products are free."
+        },
+        "partner_program_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "quote": "Open Permissions are the only permissions that are available to all developers without special approval.",
+          "note": null
+        }
+      },
+      "stages": [
+        {
+          "audience": "anyone",
+          "user_cap": null,
+          "unlocked_by": "Creating an app and adding the Sign In with LinkedIn using OpenID Connect / Share on LinkedIn products (self-service)",
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin",
+          "quote": "If your application does not have this permission, you can add it through the Developer Portal. Select your app from My Apps, navigate to the Products tab, and add the Share on LinkedIn product which will grant you w_member_social."
+        }
+      ],
+      "review_wait": null
+    },
+    {
+      "slug": "linkedin-community-management",
+      "name": "LinkedIn (Community Management API - organization Pages)",
+      "scopes_assumed": "Community Management API permissions such as w_organization_social, r_organization_social, rw_organization_admin (post/read as a LinkedIn Page the member administers)",
+      "facts": {
+        "self_serve_registration": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start?view=li-lms-2026-10",
+          "quote": "Create a developer application in the Developer Portal.",
+          "note": "App creation is self-serve, but API access is not: an access request form must be approved."
+        },
+        "dev_use_without_review": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/community-management-app-review?view=li-lms-2026-10",
+          "quote": "If your application is reviewed and approved, you'll get Community Management Development tier access.",
+          "note": "Even the Development tier requires LinkedIn vetting."
+        },
+        "production_review_required": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start?view=li-lms-2026-10",
+          "quote": "To upgrade to Community Management Standard tier, you need to complete a Standard tier access form, submit a screen recording of your app, and share test credentials for your app.",
+          "note": null
+        },
+        "security_assessment_required": {
+          "value": false,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/community-management-app-review?view=li-lms-2026-10",
+          "quote": "Once you have created your application and submitted the access request form, your access request form will be reviewed by LinkedIn for the following:",
+          "note": "Listed review criteria: approved use case, verified business email, verified organization, verified website/domain, app verified by the org's LinkedIn Page. No third-party security assessment listed."
+        },
+        "business_verification_required": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/community-management-app-review?view=li-lms-2026-10",
+          "quote": "At this time, our Community Management APIs are only available to registered legal organizations for commercial use cases only.",
+          "note": "Also: business email must be verified; 'Personal email addresses won't pass the vetting process.'; a super admin of the organization's LinkedIn Page must verify the application."
+        },
+        "paid_plan_required": {
+          "value": null,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-10",
+          "quote": "The Advertising API, Community Management API, Events Management API, Lead Sync API, Conversions API, and Matched Audiences API are open to all approved developers — apply through the standard process.",
+          "note": "UNSETTLED. No pricing statement found."
+        },
+        "partner_program_required": {
+          "value": true,
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-10",
+          "quote": "LinkedIn reserves the right to review applications and select partners at its discretion and a partner might not be upgraded even if they meet these minimum requirements.",
+          "note": "Gated, discretionary approval for Development and Standard tiers."
+        }
+      },
+      "stages": [
+        {
+          "audience": "Development tier (build/test; 500 API calls per app per 24h, 100 per member per 24h; must finish within 12 months)",
+          "user_cap": null,
+          "unlocked_by": "Approved Development tier access request (registered legal org, verified business email, Page super admin verification)",
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-10",
+          "quote": "Community Management API: Development tier is designed to build and test integrations with API call restrictions. You must complete your integration and testing within twelve months of receiving the API access."
+        },
+        {
+          "audience": "anyone (Standard tier, production, no restrictions)",
+          "user_cap": null,
+          "unlocked_by": "Standard tier access form + screencast + test credentials, reviewed by LinkedIn",
+          "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-10",
+          "quote": "Standard tier is designed for live production with no restrictions."
+        }
+      ],
+      "review_wait": null
+    }
+  ]
+}
