@@ -13,7 +13,7 @@ The API runs on Render's free tier, which stops idle services: the first request
 period takes about a minute while it wakes up.
 
 The deployed agent currently runs on a free OpenRouter model (no Claude key is configured), which
-allows about 50 model requests a day, roughly two new guides. Live generation is also limited to 3
+allows about 50 model requests a day; the four guides generated on 2026-10-28 used 46 of them. Live generation is also limited to 3
 runs at a time and 5 per visitor per hour. Once the daily model quota is used, new generations fail
 with a rate-limit error until it resets at 00:00 UTC; the existing library is unaffected.
 

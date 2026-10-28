@@ -66,8 +66,17 @@ case), or unknown.
 | GitHub (production run, live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 7/7 | 0 | Instant | Instant | yes |
 | Slack (live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 6/7 | **1** | Instant | Moderate | no |
 | Gmail (live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 6/6 (1 left unknown) | 0 | High | High | yes |
+| Notion (live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 7/7 | 0 | Instant | Instant | yes |
+| Spotify (live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 6/6 (1 left unknown) | 0 | Restricted | Restricted | yes |
+| Microsoft (live site)⁶ | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 7/7 | 0 | Instant | Instant | yes |
+| LinkedIn open products (live site) | nvidia/nemotron-3.5-super-vl:free (OpenRouter) | 2/3 (2 left unknown) | **1** | ? | Moderate | ? |
 
-Across the live guides: **19/20 scored facts correct, 1 confidently wrong.**
+Across the live guides: **41/43 scored facts correct, 2 confidently wrong.** The Notion guide settles
+the first conflicting claim above correctly: a public connection needs no review.
+
+⁶ The agent named the app "Microsoft identity platform (Azure AD) / Microsoft Graph", so the guide is
+stored under a longer slug than the golden entry's `microsoft` and `evaluate.py` reports it as not
+generated; it was scored against the `microsoft` entry with the same `score` function.
 
 **The Slack miss, and what it shows.** The guide says Slack reviews an app before arbitrary users can
 connect, labeled `sourced`, with a quote the verifier confirmed verbatim on docs.slack.dev: "apps
@@ -85,8 +94,12 @@ The production row comes from `uv run python scripts/evaluate.py --api https://o
 which reads guides through the public API, so the production database keeps accepting connections
 only from inside Render.
 
-_Notion, Spotify, Microsoft, and LinkedIn are being generated as the free model's daily quota allows
-(about two guides a day); this table is updated as they land._
+**The LinkedIn miss** is the same kind of mistake. The guide merges LinkedIn's two products: it says
+posting scopes such as `w_member_social` need the Community Management access review before anyone can
+connect (labeled `sourced`). In the golden set that scope comes with the self-serve "Share on
+LinkedIn" product, and the review applies only to the Community Management API. Scored against the
+Community Management entry instead, it gets 3/4 with one plain wrong fact. No guide covers the
+Community Management API on its own yet.
 
 **What the GitHub result shows.** The free model got every value right, but 13 of the statements it
 labeled as sourced did not quote their page verbatim, so the verifier downgraded them and the guide
