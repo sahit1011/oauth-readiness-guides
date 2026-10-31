@@ -8,6 +8,9 @@ writes a guide while you watch. Every statement in a guide is labeled **tested**
 - Live app: https://oauth-readiness-guides-six.vercel.app (web on Vercel)
 - API: https://oauth-guides-api.onrender.com/api/guides (FastAPI on Render, with Render Postgres)
 - How the guidance was checked: [VERIFICATION.md](VERIFICATION.md)
+- Library (2026-10-31): 8 guides, GitHub, Slack, Gmail, Notion, Spotify, Microsoft, LinkedIn, and
+  Basecamp. The seven with official-source answers score 41/43 facts correct, with 2 confidently
+  wrong (Slack and LinkedIn, both explained in VERIFICATION.md).
 
 The API runs on Render's free tier, which stops idle services: the first request after a quiet
 period takes about a minute while it wakes up.

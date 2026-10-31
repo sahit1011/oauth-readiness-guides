@@ -1,7 +1,7 @@
 # Verification
 
 What was checked, how, what it found, and what remains unverified. Dates are 2026-10-28 unless
-noted. Nothing here is an expected result: every number comes from a command or run listed with it.
+noted; the live library was last re-checked on 2026-10-31. Nothing here is an expected result: every number comes from a command or run listed with it.
 
 ## 1. A golden set from official sources
 
@@ -101,6 +101,18 @@ LinkedIn" product, and the review applies only to the Community Management API. 
 Community Management entry instead, it gets 3/4 with one plain wrong fact. No guide covers the
 Community Management API on its own yet.
 
+**Other defects seen while reading the live guides** (not captured by the fact score):
+
+- The Slack guide has production steps only (Marketplace preparation and review) and no development
+  steps, so its hands-on time to a first test connection reads as 0 minutes. Registering the app and
+  installing it to your own workspace are missing.
+- The Spotify guide handles its waits correctly: the partner application and quota-extension review
+  have no stated duration, so both steps are marked `unknown` and the guide shows the wait as Unknown
+  rather than 0 days.
+
+**Guides outside the golden set.** A Basecamp guide was generated through the live site after
+2026-10-28. It has no golden entry, so it is unscored; its verifier downgrades are listed below.
+
 **What the GitHub result shows.** The free model got every value right, but 13 of the statements it
 labeled as sourced did not quote their page verbatim, so the verifier downgraded them and the guide
 shows "Likely Instant (unconfirmed)". Correctness and evidence are different things and are measured
@@ -116,6 +128,22 @@ agent's tools actually returned. From two free-model GitHub runs:
 | First (single submit call) | 12 | 8 quotes not found in the cited page; 4 "sourced" claims with no usable quote |
 | After moving to section-by-section recording | 13 | all 13: quote not found in the cited page |
 | Production run on the deployed site | 4 | all 4: quote not found in the cited page. The model labeled 5 of its 7 facts as inferred itself, instead of overclaiming |
+
+Across the live library, read from `GET /api/guides/<slug>` on 2026-10-31:
+
+| Guide | Statements downgraded | Quote not found in the cited page | "Sourced" without a usable quote | Pages fetched |
+|---|---|---|---|---|
+| GitHub | 4 | 4 | 0 | 10 |
+| Slack | 23 | 22 | 1 | 10 |
+| Gmail | 14 | 12 | 2 | 13 |
+| Notion | 11 | 11 | 0 | 13 |
+| Spotify | 25 | 25 | 0 | 11 |
+| Microsoft | 17 | 17 | 0 | 10 |
+| LinkedIn | 19 | 19 | 0 | 16 |
+| Basecamp | 20 | 18 | 2 | 8 |
+
+Nearly every downgrade is a paraphrase presented as a quote. The free model gets most facts right (§2)
+but rarely copies its evidence verbatim, which is why most guides show "Likely X (unconfirmed)".
 
 Examples (statement, as the agent wrote it, then downgraded to inferred):
 
@@ -141,7 +169,7 @@ Unauthenticated probes ([`probes.py`](api/src/oauth_guides_api/probes.py)), run 
 
 | Finding | Change |
 |---|---|
-| A model sent a nested object field (`composio`) as an unparseable JSON string, 13 resubmissions in one run (reproduced 2/2 with a minimal schema) | Tool schemas are inlined, and the guide is recorded in five small validated sections. The next run needed 1 resubmission. |
+| A model sent a nested object field (`composio`) as an unparseable JSON string, 13 resubmissions in one run (reproduced 2/2 with a minimal schema) | Tool schemas are inlined, and the guide is recorded in five small validated sections. The next run needed 1 resubmission; on production, Spotify needed 0, Microsoft 3, and LinkedIn 11 rejected sections before each guide was complete (from the `invalid_guide` events of each run). |
 | Weakly evidenced facts made every guide read "Instant to Restricted" | The face-value tier is shown as "Likely X (unconfirmed)", with the worst case alongside |
 | `null` meant both "no wait" and "unknown", so an unknown review wait rendered as "No wait" | Waits are explicitly `none` or `unknown`; if a review may apply and no wait is stated, the guide says "Unknown" |
 | The model chooses probe URLs and reads untrusted pages | Probes are restricted to https hosts that resolve only to public addresses, on every redirect |
