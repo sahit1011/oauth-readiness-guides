@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { getGuide } from "@/lib/api";
+import { getGuide } from "@/lib/guides";
 import { guideToMarkdown } from "@/lib/markdown";
 
 export async function GET(request: NextRequest, ctx: RouteContext<"/apps/[slug]/markdown">) {

@@ -6,7 +6,7 @@ import { GenerateProvider } from "@/components/GenerateContext";
 import { Generator } from "@/components/Generator";
 import catalog from "@/data/catalog.json";
 import { PageIcon, ProbeIcon, SearchIcon } from "@/components/icons";
-import { listGuides } from "@/lib/api";
+import { listGuides } from "@/lib/guides";
 import {
   TIER_LABEL,
   TIER_MEANING,

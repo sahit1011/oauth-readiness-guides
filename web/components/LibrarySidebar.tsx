@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { listGuides } from "@/lib/api";
+import { listGuides } from "@/lib/guides";
 import type { Tier } from "@/lib/types";
 
 const DOT: Record<Tier, string> = {
