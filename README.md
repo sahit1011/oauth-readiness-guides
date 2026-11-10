@@ -5,20 +5,17 @@ answers that per app, with a library of guides and an agent that researches any 
 writes a guide while you watch. Every statement in a guide is labeled **tested**, **sourced**,
 **inferred**, or **unknown**, and the labels are checked mechanically rather than taken on the agent's word.
 
-- Live app: https://oauth-readiness-guides-six.vercel.app (web on Vercel)
-- API: https://oauth-guides-api.onrender.com/api/guides (FastAPI on Render, with Render Postgres)
+- Live app: https://oauth-readiness-guides-six.vercel.app (Next.js on Vercel)
+- API: https://oauth-guides-api.onrender.com/api/guides (FastAPI on Render), with the library in Neon Postgres
 - How the guidance was checked: [VERIFICATION.md](VERIFICATION.md)
 - Library (2026-10-31): 8 guides, GitHub, Slack, Gmail, Notion, Spotify, Microsoft, LinkedIn, and
   Basecamp. The seven with official-source answers score 41/43 facts correct, with 2 confidently
   wrong (Slack and LinkedIn, both explained in VERIFICATION.md).
 
-The API runs on Render's free tier, which stops idle services: the first request after a quiet
-period takes about a minute while it wakes up.
-
-The deployed agent currently runs on a free OpenRouter model (no Claude key is configured), which
-allows about 50 model requests a day; the four guides generated on 2026-10-28 used 46 of them. Live generation is also limited to 3
-runs at a time and 5 per visitor per hour. Once the daily model quota is used, new generations fail
-with a rate-limit error until it resets at 00:00 UTC; the existing library is unaffected.
+Guide pages read the library straight from Postgres, so browsing never waits for the API to start.
+Generation goes through the API: each visitor can generate 3 guides per 24 hours, and up to 3 run at once.
+The deployed agent uses a free OpenRouter model with a shared daily request quota; when it runs out,
+new generations fail with a rate-limit error until 00:00 UTC, and the library is unaffected.
 
 ## The problem
 
@@ -80,6 +77,7 @@ Each guide is organized around the questions above, not around the provider's do
  └─────┬───────┘
        ▼
  Postgres (versioned; human-reviewed versions outrank generated ones) ──▶ Next.js guide pages
+                                                                         (read-only role, no API hop)
 ```
 
 Live progress streams to the browser over server-sent events while the agent works.
@@ -131,7 +129,7 @@ uv run --env-file .env pytest -q           # unit tests + store tests against th
 uv run --env-file .env uvicorn oauth_guides_api.app:app --port 8000
 
 cd ../web
-echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
+printf 'NEXT_PUBLIC_API_URL=http://localhost:8000\nGUIDES_DATABASE_URL=postgresql://guides:guides-dev-only@localhost:5432/guides\n' > .env.local
 npm install
 npm run dev                                # http://localhost:3000
 ```
@@ -146,6 +144,13 @@ npm run dev                                # http://localhost:3000
 | `GUIDES_DATABASE_URL` | Postgres connection string |
 | `WEB_ORIGIN` | The web app's origin, for CORS |
 
+`web/.env.local` (and the Vercel project's environment in production):
+
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | The API, for live generation |
+| `GUIDES_DATABASE_URL` | Postgres for reading the library. In production this is a role that can only `select` from `guides`, created by the database owner with `create role ... login password ...; grant usage on schema public ...; grant select on guides ...` |
+
 Useful scripts (run from `api/`):
 
 ```bash
@@ -157,10 +162,11 @@ uv run --env-file .env python -m oauth_guides_api.curate <slug> <version>   # ma
 
 ## Limitations
 
-- **Single API instance.** Live jobs and rate limits are held in memory, so a restart drops running
-  jobs. Fine for a demo; a queue would replace it in production.
-- **Free hosting tiers.** The Render free instance sleeps when idle (slow first request), and the
-  free Render Postgres database expires on 2026-11-26.
+- **Single API instance.** Live jobs are held in memory, so a restart drops running jobs (the
+  per-visitor limit is in Postgres and survives). A queue would let jobs outlive a restart.
+- **The API sleeps when idle.** It runs on Render's free tier, so the first generation after a quiet
+  period waits about a minute while the API starts (83 seconds measured on 2026-11-10). Browsing the
+  library never waits, because pages read Postgres directly.
 - **The quote check is lexical.** It proves the quote exists in the page, not that the page means
   what the claim says. A `tested` claim is accepted if it cites any probe, without checking that the
   probe output supports the statement.

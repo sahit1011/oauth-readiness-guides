@@ -91,8 +91,7 @@ is effectively required. A good guide says exactly that. This guide also missed 
 most important Slack nuance for agent builders.
 
 The production row comes from `uv run python scripts/evaluate.py --api https://oauth-guides-api.onrender.com`,
-which reads guides through the public API, so the production database keeps accepting connections
-only from inside Render.
+which reads guides through the public API.
 
 **The LinkedIn miss** is the same kind of mistake. The guide merges LinkedIn's two products: it says
 posting scopes such as `w_member_social` need the Community Management access review before anyone can
