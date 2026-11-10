@@ -24,6 +24,14 @@ _SCHEMA = [
     """,
     # Every version starts uncurated; curation is an explicit later act (mark_curated).
     "alter table guides add column if not exists curated boolean not null default false",
+    # One row per generation a visitor started, kept only for the limit window (claim_generation prunes).
+    """
+    create table if not exists generation_starts (
+        ip text not null,
+        started_at timestamptz not null default now()
+    )
+    """,
+    "create index if not exists generation_starts_ip on generation_starts (ip, started_at)",
 ]
 
 _PREFERRED_ORDER = "order by slug, curated desc, version desc"
@@ -109,3 +117,18 @@ class Store:
             ).rowcount
         if updated != 1:
             raise LookupError(f"no guide {slug} version {version}")
+
+    def claim_generation(self, ip: str, limit: int, window_seconds: int) -> bool:
+        """Records a generation start for `ip` and returns True, or returns False if it already has `limit`
+        starts in the last `window_seconds`. Kept in Postgres so the limit survives API restarts."""
+        with psycopg.connect(self._url) as conn:
+            # Serializes concurrent claims by one visitor so the count and insert cannot interleave.
+            conn.execute("select pg_advisory_xact_lock(hashtext(%s))", (f"generation-start:{ip}",))
+            conn.execute(
+                "delete from generation_starts where started_at < now() - make_interval(secs => %s)", (window_seconds,)
+            )
+            started = conn.execute("select count(*) from generation_starts where ip = %s", (ip,)).fetchone()[0]
+            if started >= limit:
+                return False
+            conn.execute("insert into generation_starts (ip) values (%s)", (ip,))
+        return True

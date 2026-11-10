@@ -128,3 +128,39 @@ def test_slugify(name, slug):
 def test_slugify_rejects_names_without_letters_or_digits():
     with pytest.raises(ValueError, match="cannot derive a slug"):
         slugify("—")
+
+
+@pytest.fixture
+def visitor():
+    url = os.environ["GUIDES_DATABASE_URL"]
+    ip = f"test-{uuid.uuid4().hex[:8]}"
+    yield Store(url), ip, url
+    with psycopg.connect(url) as conn:
+        conn.execute("delete from generation_starts where ip = %s", (ip,))
+
+
+def test_generation_claims_stop_at_the_limit_per_visitor(visitor):
+    s, ip, _ = visitor
+    assert [s.claim_generation(ip, limit=3, window_seconds=86400) for _ in range(4)] == [True, True, True, False]
+    other = f"{ip}-other"
+    try:
+        assert s.claim_generation(other, limit=3, window_seconds=86400)
+    finally:
+        with psycopg.connect(os.environ["GUIDES_DATABASE_URL"]) as conn:
+            conn.execute("delete from generation_starts where ip = %s", (other,))
+
+
+def test_generation_starts_older_than_the_window_do_not_count(visitor):
+    s, ip, url = visitor
+    assert s.claim_generation(ip, limit=1, window_seconds=86400)
+    with psycopg.connect(url) as conn:
+        conn.execute("update generation_starts set started_at = now() - interval '25 hours' where ip = %s", (ip,))
+    assert s.claim_generation(ip, limit=1, window_seconds=86400)
+    assert not s.claim_generation(ip, limit=1, window_seconds=86400)
+
+
+def test_concurrent_claims_never_exceed_the_limit(visitor):
+    s, ip, _ = visitor
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = list(pool.map(lambda _: s.claim_generation(ip, limit=3, window_seconds=86400), range(8)))
+    assert results.count(True) == 3

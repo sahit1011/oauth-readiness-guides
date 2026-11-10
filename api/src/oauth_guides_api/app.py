@@ -3,9 +3,7 @@
 import asyncio
 import json
 import logging
-import time
 import uuid
-from collections import defaultdict
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
@@ -25,11 +23,10 @@ log = logging.getLogger(__name__)
 _TERMINAL = ("done", "error")
 # Chosen, not sourced: each run spends LLM credit and holds a worker thread for minutes.
 MAX_CONCURRENT_JOBS = 3
-# Chosen, not sourced: lets a reviewer try several apps without a public link running up a bill.
-JOBS_PER_IP_PER_HOUR = 5
-_HOUR_SECONDS = 3600
-# Single API instance assumed (see Job); limits reset on restart.
-_starts_by_ip: dict[str, list[float]] = defaultdict(list)
+# Set by the project owner: each visitor may start three guides per rolling 24 hours, so one visitor
+# cannot use up the model's daily request quota. Stored in Postgres, so restarts do not reset it.
+JOBS_PER_IP_PER_DAY = 3
+_DAY_SECONDS = 24 * 60 * 60
 
 
 @dataclass
@@ -42,6 +39,9 @@ class Job:
 
 
 _jobs: dict[str, Job] = {}
+# Starts that passed the cap check and are waiting on the database claim. They count toward
+# MAX_CONCURRENT_JOBS, because overlapping requests would otherwise all pass the check during that await.
+_claims_in_flight = 0
 
 
 @asynccontextmanager
@@ -87,22 +87,30 @@ async def _run(job: Job, query: str) -> None:
 
 @app.post("/api/generate")
 async def start_generation(request: GenerateRequest, http: Request) -> dict:
+    global _claims_in_flight
     if not request.regenerate:
         existing = await asyncio.to_thread(app.state.store.find, request.query)
         if existing is not None:
             return {"existing": {"slug": existing.guide.slug, "app_name": existing.guide.draft.app_name, "curated": existing.curated}}
 
-    if sum(1 for j in _jobs.values() if j.task is not None and not j.task.done()) >= MAX_CONCURRENT_JOBS:
+    running = sum(1 for j in _jobs.values() if j.task is not None and not j.task.done())
+    if running + _claims_in_flight >= MAX_CONCURRENT_JOBS:
         raise HTTPException(429, f"{MAX_CONCURRENT_JOBS} guides are already being generated; try again in a few minutes")
     # Render's edge (Cloudflare) sets True-Client-IP to the real client and overwrites a client-sent
     # value, whereas the leftmost X-Forwarded-For entry is client-controlled. The header is absent only
     # when the API is reached directly (local development), where the socket address is the client.
     ip = http.headers.get("true-client-ip") or http.client.host
-    now = time.monotonic()
-    recent = [t for t in _starts_by_ip[ip] if now - t < _HOUR_SECONDS]
-    if len(recent) >= JOBS_PER_IP_PER_HOUR:
-        raise HTTPException(429, f"limit of {JOBS_PER_IP_PER_HOUR} generations per hour reached; try again later")
-    _starts_by_ip[ip] = [*recent, now]
+    _claims_in_flight += 1
+    try:
+        allowed = await asyncio.to_thread(app.state.store.claim_generation, ip, JOBS_PER_IP_PER_DAY, _DAY_SECONDS)
+    finally:
+        _claims_in_flight -= 1
+    if not allowed:
+        raise HTTPException(
+            429,
+            f"You can generate {JOBS_PER_IP_PER_DAY} guides in 24 hours and have used them all; "
+            "try again 24 hours after your first",
+        )
 
     job_id = uuid.uuid4().hex
     job = Job()
